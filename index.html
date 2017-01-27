@@ -1,0 +1,187 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=7; IE=EmulateIE9; IE=10" />
+
+	<meta name="author" content="Thomas Tursics" />
+	<meta name="keywords" content="Berlin,Lichtenberg,Gebäudescan,kaputt,Schule" />
+	<meta name="robots" content="index,follow" />
+
+ 	<title>Überschrift - Gebäudescan der Berliner Schulen</title>
+	<meta property="og:title" content="Überschrift - Gebäudescan der Berliner Schulen" />
+	<meta name="twitter:title" content="Überschrift - Gebäudescan der Berliner Schulen">
+
+	<meta name="description" content="Untertitel" />
+	<meta property="og:description" content="Untertitel" />
+	<meta name="twitter:description" content="Untertitel">
+
+	<link rel="image_src" type="image/png" href="http://trees-story.tursics.de/assets/social.gif" />
+	<meta property="og:image" content="http://trees-story.tursics.de/assets/social.gif" />
+	<meta name="twitter:image:src" content="http://trees-story.tursics.de/assets/social.gif">
+
+	<meta property="og:url" content="http://trees-story.tursics.de/">
+	<meta name="twitter:domain" content="http://trees-story.tursics.de/">
+
+	<meta name="twitter:card" content="summary">
+	<meta name="twitter:creator" content="@tursics">
+
+	<link rel="stylesheet" href="lib/jquery.mobile-1.4.2/jquery.mobile-1.4.2.min.css">
+	<link rel="stylesheet" href="lib/font-awesome-4.6.3/css/font-awesome.css">
+	<link rel="stylesheet" href="lib/leaflet-0.7.3/leaflet.css" />
+	<link rel="stylesheet" href="index.css" />
+	<link rel="stylesheet" href="lib/leaflet.awesome-markers-2.0.2/leaflet.awesome-markers.css">
+
+	<script src="lib/leaflet-0.7.3/leaflet.js"></script>
+	<script src="lib/jquery.mobile-1.4.2/jquery-1.11.1.min.js"></script>
+	<script src="index.js"></script>
+	<script src="lib/jquery.mobile-1.4.2/jquery.mobile-1.4.2.min.js"></script>
+	<script src="lib/jquery.autocomplete-1.2.25/jquery.autocomplete.min.js"></script>
+	<script src="lib/leaflet.awesome-markers-2.0.2/leaflet.awesome-markers.min.js"></script>
+
+	<link rel="apple-touch-icon" sizes="57x57" href="/assets/apple-icon-57x57.png">
+	<link rel="apple-touch-icon" sizes="60x60" href="/assets/apple-icon-60x60.png">
+	<link rel="apple-touch-icon" sizes="72x72" href="/assets/apple-icon-72x72.png">
+	<link rel="apple-touch-icon" sizes="76x76" href="/assets/apple-icon-76x76.png">
+	<link rel="apple-touch-icon" sizes="114x114" href="/assets/apple-icon-114x114.png">
+	<link rel="apple-touch-icon" sizes="120x120" href="/assets/apple-icon-120x120.png">
+	<link rel="apple-touch-icon" sizes="144x144" href="/assets/apple-icon-144x144.png">
+	<link rel="apple-touch-icon" sizes="152x152" href="/assets/apple-icon-152x152.png">
+	<link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-icon-180x180.png">
+	<link rel="icon" type="image/png" sizes="192x192"  href="/assets/android-icon-192x192.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="96x96" href="/assets/favicon-96x96.png">
+	<meta name="msapplication-TileColor" content="#ffffff">
+	<meta name="msapplication-TileImage" content="/assets/ms-icon-144x144.png">
+	<meta name="theme-color" content="#ffffff">
+</head>
+<body>
+	<div data-role="page" id="pageMap">
+		<div role="main" class="ui-content" id="mapContainer"></div>
+		<div id="headerBox" class="big">
+			<div class="author">
+				<a href="http://www.tursics.de/" target="_blank" title="Thomas Tursics"><img src="/assets/logo.png"><span>Thomas Tursics</span></a>
+			</div>
+			<div class="social">
+				<a class="facebook" href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Ftrees-story.tursics.de%2F" rel="popup" title="Bei Facebook teilen">teilen<span></span></a>
+				<a class="twitter" href="https://twitter.com/intent/tweet?text=Wie%20kaputt%20ist%20deine%20Schule?%20Finde%20es%20hier%20heraus&amp;url=http://trees-story.tursics.de/" rel="popup" title="Bei Twitter teilen">tweeten<span></span></a>
+			</div>
+			<h1>Überschrift</h1>
+			<div>Untertitel</div>
+		</div>
+		<div id="searchBox" class="big">
+			<h3>Prägnant</h3>
+			<div class="sample">
+				Zum Beispiel: <a href="#">Foo</a>, <a href="#">Foo</a>
+			</div>
+			<div class="searchInput">
+				<input type="text" name="schools" id="autocomplete" placeholder="Geben Sie Foo ein" />
+				<div><i class="fa fa-search" aria-hidden="true"></i></div>
+			</div>
+		</div>
+		<div id="scrollDownPane">
+			<a href="#pageStory"><i class="fa fa-angle-double-down" aria-hidden="true"></i></a>
+		</div>
+		<div id="pageStory">
+			<div class="source">Quelle: Senatsverwaltung für Stadtentwicklung und Umwelt Berlin. Stand: 01.03.2016 (<a href="https://daten.berlin.de/datensaetze/baumbestand-berlin-stra%C3%9Fenb%C3%A4ume-wfs" target="_blank">Rohdaten</a> oder <a href="https://github.com/tursics/trees-story/blob/master/data/re_strassenbaeume.tsv" target="_blank">Rohdaten</a>)</div>
+			<div>
+				Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo.
+			</div>
+			<div>
+				Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam eget dui.
+			</div>
+			<div class="printerLabel">
+				<div class="leaflet-popup-content-wrapper scale150 rotateMin5"><div class="leaflet-popup-content"><div class="top red">Das ist</div><div class="middle">123 Mio.</div><div class="bottom red">ein Item</div></div></div>
+				<div style="clear: both;"></div>
+			</div>
+			<div>
+				Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed ipsum. Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem. Maecenas nec odio et ante tincidunt tempus. Donec vitae sapien ut libero venenatis faucibus. Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt. Duis leo. Sed fringilla mauris sit amet nibh.
+			</div>
+			<div class="embedTable">
+				<h3>Eine Tabelle</h3>
+				<table>
+					<tr><th>Bezirk</th><th>Kosten</th></tr>
+					<tr><td>Tempelhof-Schöneberg</td><td>557&nbsp;Mio.&nbsp;Euro</td></tr>
+					<tr><td>Steglitz-Zehlendorf</td><td>457&nbsp;Mio.&nbsp;Euro</td></tr>
+					<tr><td>Neukölln</td><td>452&nbsp;Mio.&nbsp;Euro</td></tr>
+					<tr><td>Pankow</td><td>427&nbsp;Mio.&nbsp;Euro</td></tr>
+					<tr><td>Reinickendorf</td><td>409&nbsp;Mio.&nbsp;Euro</td></tr>
+					<tr><td>Charlottenburg-Wilmersdorf</td><td>368&nbsp;Mio.&nbsp;Euro</td></tr>
+					<tr><td>Friedrichshain-Kreuzberg</td><td>357&nbsp;Mio.&nbsp;Euro</td></tr>
+					<tr><td>berufliche Schulen</td><td>336&nbsp;Mio.&nbsp;Euro</td></tr>
+					<tr><td>Mitte</td><td>334&nbsp;Mio.&nbsp;Euro</td></tr>
+					<tr><td>Lichtenberg</td><td>328&nbsp;Mio.&nbsp;Euro</td></tr>
+					<tr><td>Spandau</td><td>306&nbsp;Mio.&nbsp;Euro</td></tr>
+					<tr><td>Marzahn-Hellersdorf</td><td>298&nbsp;Mio.&nbsp;Euro</td></tr>
+					<tr><td>Treptow-Köpenick</td><td>285&nbsp;Mio.&nbsp;Euro</td></tr>
+				</table>
+				<div>Wieso weshalb warum...</div>
+			</div>
+			<div>
+				Donec sodales sagittis magna. Sed consequat, leo eget bibendum sodales, augue velit cursus nunc, quis gravida magna mi a libero. Fusce vulputate eleifend sapien. Vestibulum purus quam, scelerisque ut, mollis sed, nonummy id, metus. Nullam accumsan lorem in dui. Cras ultricies mi eu turpis hendrerit fringilla. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae;
+			</div>
+			<div>
+				In ac dui quis mi consectetuer lacinia. Nam pretium turpis et arcu. Duis arcu tortor, suscipit eget, imperdiet nec, imperdiet iaculis, ipsum. Sed aliquam ultrices mauris. Integer ante arcu, accumsan a, consectetuer eget, posuere ut, mauris. Praesent adipiscing. Phasellus ullamcorper ipsum rutrum nunc. Nunc nonummy metus. Vestibulum volutpat pretium libero. Cras id dui.
+			</div>
+			<div class="embedPrinterLabel">
+				<h3>Tabelle zwei</h3>
+				<div class="buttons">
+					<a
+					id="school" href="#">Faa</a><a
+					id="sport" href="#">Fee</a><a
+					id="room" href="#">Fii</a><a
+					id="outdoor" href="#">Foo</a><a
+					id="sanitary" href="#">Fuu</a>
+				</div>
+				<div class="printerLabel canvas"></div>
+			</div>
+			<div>
+				Aenean ut eros et nisl sagittis vestibulum. Nullam nulla eros, ultricies sit amet, nonummy id, imperdiet feugiat, pede. Sed lectus. Donec mollis hendrerit risus. Phasellus nec sem in justo pellentesque facilisis. Etiam imperdiet imperdiet orci. Nunc nec neque. Phasellus leo dolor, tempus non, auctor et, hendrerit quis, nisi. Curabitur ligula sapien, tincidunt non, euismod vitae, posuere imperdiet, leo.
+			</div>
+			<div class="embedTwitter">
+				<blockquote class="twitter-tweet" data-lang="de"><p lang="de" dir="ltr">Der Text kommt direkt von Twitter</p>&mdash; Von (@von) Datum</blockquote><script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+			</div>
+			<div>
+				Maecenas malesuada. Praesent congue erat at massa. Sed cursus turpis vitae tortor. Donec posuere vulputate arcu. Phasellus accumsan cursus velit. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Sed aliquam, nisi quis porttitor congue, elit erat euismod orci, ac placerat dolor lectus quis orci. Phasellus consectetuer vestibulum elit. Aenean tellus metus, bibendum sed, posuere ac, mattis non, nunc.
+			</div>
+			<div>
+				Vestibulum fringilla pede sit amet augue. In turpis. Pellentesque posuere. Praesent turpis. Aenean posuere, tortor sed cursus feugiat, nunc augue blandit nunc, eu sollicitudin urna dolor sagittis lacus. Donec elit libero, sodales nec, volutpat a, suscipit non, turpis. Nullam sagittis. Suspendisse pulvinar, augue ac venenatis condimentum, sem libero volutpat nibh, nec pellentesque velit pede quis nunc.
+			</div>
+			<div class="embedImage">
+				<img src="/assets/image.jpg" alt="Alt.Text zum Bild">
+				<div>Eine Bildunterschrift</div>
+			</div>
+			<div>
+				Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Fusce id purus. Ut varius tincidunt libero. Phasellus dolor. Maecenas vestibulum mollis diam. Pellentesque ut neque. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. In dui magna, posuere eget, vestibulum et, tempor auctor, justo. In ac felis quis tortor malesuada pretium.
+			</div>
+			<div>
+				Pellentesque auctor neque nec urna. Proin sapien ipsum, porta a, auctor quis, euismod ut, mi. Aenean viverra rhoncus pede. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Ut non enim eleifend felis pretium feugiat. Vivamus quis mi. Phasellus a est. Phasellus magna. In hac habitasse platea dictumst. Curabitur at lacus ac velit ornare lobortis.
+			</div>
+			<div class="embedInfo">
+				<h3>Was die Anwendung zeigt</h3>
+				<div>
+					Curabitur a felis in nunc fringilla tristique. Morbi mattis ullamcorper velit. Phasellus gravida semper nisi. Nullam vel sem. Pellentesque libero tortor, tincidunt et, tincidunt eget, semper nec, quam. Sed hendrerit. Morbi ac felis. Nunc egestas, augue at pellentesque laoreet, felis eros vehicula leo, at malesuada velit leo quis pede. Donec interdum, metus et hendrerit aliquet, dolor diam sagittis ligula, eget egestas libero turpis vel mi.
+				</div>
+				<div>
+					Nunc nulla. Fusce risus nisl, viverra et, tempor et, pretium in, sapien. Donec venenatis vulputate lorem. Morbi nec metus. Phasellus blandit leo ut odio. Maecenas ullamcorper, dui et placerat feugiat, eros pede varius nisi, condimentum viverra felis nunc et lorem. Sed magna purus, fermentum eu, tincidunt eu, varius ut, felis. In auctor lobortis lacus. Quisque libero metus, condimentum nec, tempor a, commodo mollis, magna.
+				</div>
+				<div>
+					Vestibulum ullamcorper mauris at ligula. Fusce fermentum. Nullam cursus lacinia erat. Praesent blandit laoreet nibh. Fusce convallis metus id felis luctus adipiscing. Pellentesque egestas, neque sit amet convallis pulvinar, justo nulla eleifend augue, ac auctor orci leo non est. Quisque id mi. Ut tincidunt tincidunt erat. Etiam feugiat lorem non metus. Vestibulum dapibus nunc ac augue. Curabitur vestibulum aliquam leo.
+				</div>
+				<div class="showMore"><a href="#">Weiter lesen</a></div>
+			</div>
+			<div class="embedCredits">
+				Die Rohdaten zu diesem Artikel können Sie <a href="https://daten.berlin.de/datensaetze/baumbestand-berlin-stra%C3%9Fenb%C3%A4ume-wfs" target="_blank">hier ansehen</a> oder <a href="https://github.com/tursics/trees-story/blob/master/data/re_strassenbaeume.tsv" target="_blank">hier ansehen</a> und herunterladen.
+				Haben Sie eine Anmerkung oder einen Fehler entdeckt, dann freue ich mich über <a href="mailto:thomas@tursics.de">Ihre Mail</a>.
+			</div>
+			<div class="embedAuthor">
+				Von <a href="https://twitter.com/tursics/" target="_blank">Thomas Tursics</a><br>
+				Made with <i class="fa fa-heart" aria-hidden="true"></i> + <a href="https://github.com/tursics/trees-story" target="_blank"><i class="fa fa-github" aria-hidden="true"></i></a> in Berlin, xx.xx.2017
+			</div>
+		</div>
+	</div>
+</body>
+</html>
