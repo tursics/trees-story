@@ -54,7 +54,7 @@ function analyseOwnership(trees) {
 
 //-----------------------------------------------------------------------
 
-function logData(data, title, top, bottom) {
+function logData(trees, data, title, top, bottom) {
 	'use strict';
 
 	var i, key, sortable = [];
@@ -72,10 +72,14 @@ function logData(data, title, top, bottom) {
 		if (i === top) {
 			break;
 		}
-		console.log('  ' + sortable[i].title + ': ' + sortable[i].count + ' trees');
+		if (sortable[i].count >= (trees.length / 20)) {
+			console.log('  ' + sortable[i].title + ': ' + sortable[i].count + ' trees (' + (parseInt(sortable[i].count / trees.length * 1000, 10) / 10) + '%)');
+		} else {
+			console.log('  ' + sortable[i].title + ': ' + sortable[i].count + ' trees');
+		}
 	}
 
-	if (top >= data.length) {
+	if (0 === bottom) {
 		return;
 	}
 
@@ -103,7 +107,7 @@ function analyseDistricts(trees) {
 		}
 	}
 
-	logData(data, 'Districts:', 12, 0);
+	logData(trees, data, 'Districts:', 12, 0);
 }
 
 //-----------------------------------------------------------------------
@@ -112,9 +116,6 @@ function analyseType(trees) {
 	'use strict';
 
 	var i, key, count = [], data = {}, sortable = [], item;
-
-	// "Art_Dtsch": "WINTER-LINDE"
-	// "Art_Bot": "TILIA CORDATA"
 
 	for (i = 0; i < trees.length; ++i) {
 		item = trees[i].Gattung;
@@ -127,7 +128,31 @@ function analyseType(trees) {
 		}
 	}
 
-	logData(data, 'Type:', 10, 5);
+	logData(trees, data, 'Type:', 10, 5);
+}
+
+//-----------------------------------------------------------------------
+
+function analyseSubType(trees) {
+	'use strict';
+
+	var i, key, count = [], data = {}, sortable = [], item;
+
+	// "Art_Dtsch": "WINTER-LINDE"
+	// "Art_Bot": "TILIA CORDATA"
+
+	for (i = 0; i < trees.length; ++i) {
+		item = trees[i].Art_Bot;
+
+		if (-1 === count.indexOf(item)) {
+			count.push(item);
+			data[item] = 1;
+		} else {
+			++data[item];
+		}
+	}
+
+	logData(trees, data, 'Subtype:', 10, 0);
 }
 
 //-----------------------------------------------------------------------
@@ -152,6 +177,7 @@ try {
 	analyseOwnership(trees);
 	analyseDistricts(trees);
 	analyseType(trees);
+	analyseSubType(trees);
 } catch (e) {
 	console.error(e);
 }
