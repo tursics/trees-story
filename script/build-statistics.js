@@ -263,6 +263,61 @@ function analyseHeight(trees) {
 
 	logDataKey(trees, data, 'Height (in cm):', 21, 10);
 	console.log('  best: ' + (parseInt(sum / trees.length, 10)) + ' cm');
+	logData(trees, data, 'Height (in cm):', 1, 0);
+}
+
+//-----------------------------------------------------------------------
+
+function analyseTrunk(trees) {
+	'use strict';
+
+	var i, key, count = [], data = {}, item, sum = 0;
+
+	for (i = 0; i < trees.length; ++i) {
+		item = parseInt(trees[i].Stammumfg, 10);
+		if (isNaN(item)) {
+			continue;
+		}
+		sum += item;
+
+		if (-1 === count.indexOf(item)) {
+			count.push(item);
+			data[item] = 1;
+		} else {
+			++data[item];
+		}
+	}
+
+	logDataKey(trees, data, 'Trunk circumference (in cm):', 20, 10);
+	console.log('  best: ' + (parseInt(sum / trees.length, 10)) + ' cm');
+	logData(trees, data, 'Trunk circumference (in cm):', 1, 0);
+}
+
+//-----------------------------------------------------------------------
+
+function analyseCrown(trees) {
+	'use strict';
+
+	var i, key, count = [], data = {}, item, sum = 0;
+
+	for (i = 0; i < trees.length; ++i) {
+		item = parseInt(trees[i].KroneDurch * 100, 10);
+		if (isNaN(item)) {
+			continue;
+		}
+		sum += item;
+
+		if (-1 === count.indexOf(item)) {
+			count.push(item);
+			data[item] = 1;
+		} else {
+			++data[item];
+		}
+	}
+
+	logDataKey(trees, data, 'Tree crown (in cm):', 20, 10);
+	console.log('  best: ' + (parseInt(sum / trees.length, 10)) + ' cm');
+	logData(trees, data, 'Tree crown (in cm):', 1, 0);
 }
 
 //-----------------------------------------------------------------------
@@ -275,8 +330,6 @@ try {
 	console.log('Data count:  ' + trees.length);
 //	console.log('First tree: ' + JSON.stringify(trees[0], null, 4));
 	// "StrName": "Hennigsdorfer Straße"
-	// "Stammumfg": 50
-	// "KroneDurch": "null"
 
 	garbageCollection(trees);
 	console.log('Trees count: ' + trees.length);
@@ -287,6 +340,8 @@ try {
 	analyseSubType(trees);
 	analyseAge(trees);
 	analyseHeight(trees);
+	analyseTrunk(trees);
+	analyseCrown(trees);
 } catch (e) {
 	console.error(e);
 }
