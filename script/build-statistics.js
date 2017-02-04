@@ -322,6 +322,45 @@ function analyseCrown(trees) {
 
 //-----------------------------------------------------------------------
 
+function analyseIdealTree(trees) {
+	'use strict';
+
+	var i, key, count = [], data = {}, item;
+
+	for (i = 0; i < trees.length; ++i) {
+/*		if ('Steglitz-Zehlendorf' !== trees[i].BEZIRK) {
+			continue;
+		}*/
+		if ('TILIA CORDATA' !== trees[i].Art_Bot) {
+			continue;
+		}
+		if ((parseInt(trees[i].Standalter, 10) < 41) || (42 < parseInt(trees[i].Standalter, 10))) {
+			continue;
+		}
+		if (7 !== parseInt(trees[i].BaumHoehe, 10)) {
+			continue;
+		}
+		if (60 !== parseInt(trees[i].Stammumfg, 10)) {
+			continue;
+		}
+		if (6 !== parseInt(trees[i].KroneDurch, 10)) {
+			continue;
+		}
+		item = JSON.stringify(trees[i], null, 4);
+
+		if (-1 === count.indexOf(item)) {
+			count.push(item);
+			data[item] = 1;
+		} else {
+			++data[item];
+		}
+	}
+
+	logData(trees, data, 'Ideal trees:', 20, 0);
+}
+
+//-----------------------------------------------------------------------
+
 try {
 	console.log('loading...');
 
@@ -342,6 +381,7 @@ try {
 	analyseHeight(trees);
 	analyseTrunk(trees);
 	analyseCrown(trees);
+	analyseIdealTree(trees);
 } catch (e) {
 	console.error(e);
 }
