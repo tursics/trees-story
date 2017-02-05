@@ -790,6 +790,9 @@ body, .ui-overlay-a, .ui-page-theme-a {
 	padding: .5em 0 0 0;
 	line-height: 1.4em;
 }
+#pageStory div.embedTable td:nth-child(even) {
+	text-align: right;
+}
 
 #pageStory div.embedImage {
 	padding: 1em 0;
