@@ -698,11 +698,16 @@
 
 /* pageStory */
 
+body, .ui-overlay-a, .ui-page-theme-a {
+	background: #efede4;
+}
+
 #pageStory {
+	background: #f9f9f9;
 	font-family: 'Noto Serif', serif;
 	font-size: 18px;
 	max-width: 38em;
-	margin: 1em auto;
+	margin: 0 auto;
 	line-height: 1.7em
 }
 #pageStory div {
