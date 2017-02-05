@@ -830,13 +830,13 @@
 	display: none;
 }
 
-#pageStory div.embedSpending {
+#pageStory div.embedSpending, #pageStory div.embedGuessing {
 	background: #f1f8fc;
 	border: 2px solid #38aadd;
 	font-family: 'Montserrat', sans-serif;
 	font-size: 16px;
 }
-#pageStory div.embedSpending .ui-slider {
+#pageStory div.embedSpending .ui-slider, #pageStory div.embedGuessing .ui-slider {
 	padding-top: 0;
 	margin: 0;
 }
@@ -846,6 +846,9 @@
 
 .hideSecondPart .secondPart {
 	color: #ddd;
+}
+.hideThirdPart .thirdPart, .hideFourthPart .fourthPart, .hideFivethPart .fivethPart, .hideSixthPart .sixthPart {
+	display: none;
 }
 
 #pageStory div.embedPrinterLabel {

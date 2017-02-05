@@ -237,6 +237,21 @@ function initQuiz() {
 		$('.embedQuiz .page3').hide();
 		$('.embedQuiz .page4').show();
 	});
+
+	// bottom quiz
+
+	$('.embedGuessing a.guess1').on('click', function (e) {
+		$('body').removeClass('hideThirdPart');
+	});
+	$('.embedGuessing a.guess2').on('click', function (e) {
+		$('body').removeClass('hideFourthPart');
+	});
+	$('.embedGuessing a.guess3').on('click', function (e) {
+		$('body').removeClass('hideFivethPart');
+	});
+	$('.embedGuessing a.guess4').on('click', function (e) {
+		$('body').removeClass('hideSixthPart');
+	});
 }
 
 // -----------------------------------------------------------------------------

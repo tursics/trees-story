@@ -58,7 +58,7 @@
 	<meta name="msapplication-TileImage" content="/assets/ms-icon-144x144.png">
 	<meta name="theme-color" content="#ffffff">
 </head>
-<body class="hideSecondPart">
+<body class="hideSecondPart hideThirdPart hideFourthPart hideFivethPart hideSixthPart">
 	<div data-role="page" id="pageMap">
 		<div role="main" class="ui-content" id="mapContainer"></div>
 		<div id="headerBox" class="big">
@@ -160,7 +160,7 @@
 			</div>
 			<div class="embedSpending">
 				<div>Ich wäre bereit für einen Baum zu spenden...</div>
-				<input type="range" name="slider-1" id="slider-1" value="20" min="0" max="600" />
+				<input type="range" name="slider-1" id="slider-1" value="20" min="0" max="500" />
 				<a href="#" class="continue" data-role="button" data-theme="b" data-inline="true">weiter</a>	
 				<div class="answer">12% würden mehr spenden als Sie</div>
 			</div>
@@ -211,29 +211,32 @@
 				Eine Kostprobe?
 				(Wir werden selbstverständlich die entsprechende Stelle informieren und um Berichtigung bitten.)
 			</div>
-			<div class="embedSlider">
-				<div>Wie hoch ist der größte Baum?</div>
-				<div>0m .. 100m .. 200m .. 300m .. 368m</div>
+			<div class="embedGuessing secondPart">
+				<div>Wie hoch ist der größte Baum? (Frage 1/3)</div>
+				<input type="range" name="slider-2" id="slider-2" value="20" min="0" max="500" />
+				<a href="#" class="guess1" data-role="button" data-theme="b" data-inline="true">weiter</a>	
 			</div>
-			<div class="secondPart">
-				Der höchste Baum ist mir 12.600 Metern angegeben.
+			<div class="thirdPart">
+				Der höchste Baum ist mit 12.600 Metern angegeben.
 				Zum Vergleich: Das ist die Reiseflughöhe von Düsenverkehrsflugzeugen.
 				Insgesamt sind wohl 57 Bäume höher als der Fernsehtum mit seinen 368 Metern.
 			</div>
-			<div class="embedSlider">
-				<div>Welchen Umfang hat der breiteste Baum?</div>
-				<div>0m .. 100m .. 200m .. 300m .. 368m</div>
+			<div class="embedGuessing thirdPart">
+				<div>Welchen Umfang hat der breiteste Baum? (Frage 2/3)</div>
+				<input type="range" name="slider-3" id="slider-3" value="20" min="0" max="500" />
+				<a href="#" class="guess2" data-role="button" data-theme="b" data-inline="true">weiter</a>	
 			</div>
-			<div class="secondPart">
+			<div class="fourthPart">
 				Der breiteste Baum hat laut den vorliegenden Zahlen einen Umfang von exakt 325 Metern (knapp gefolgt vom zweitplatzierten mit 305 Metern).
 				325 Metern im Durchmesser entspricht einem Kreis mit über 100 Meter in der Breite.
 				Oder anders ausgedrückt, der Baum würde in voller Schönheit und (Stamm-)Breite aus dem Dach des Sony-Centers herauswachsen.
 			</div>
-			<div class="embedSlider">
-				<div>Welchen Kronendurchmesser hat der voluminöseste Baum?</div>
-				<div>0m .. 100m .. 200m .. 300m .. 368m</div>
+			<div class="embedGuessing fourthPart">
+				<div>Welchen Kronendurchmesser hat der voluminöseste Baum? (Frage 3/3)</div>
+				<input type="range" name="slider-4" id="slider-4" value="20" min="0" max="500" />
+				<a href="#" class="guess3" data-role="button" data-theme="b" data-inline="true">weiter</a>	
 			</div>
-			<div class="secondPart">
+			<div class="fivethPart">
 				Schlappe 500 Meter hat die breiteste Baumkrone im Durchmesser.
 				Stände dieser Baum an Stelle des Fernsehturms, würde er sein Blätterdach vom Roten Rathaus bis zum Kaufhof spannen.
 			</div>
