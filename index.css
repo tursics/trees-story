@@ -801,6 +801,35 @@
 	line-height: 1.4em;
 }
 
+#pageStory div.embedQuiz {
+	background: #f1f8fc;
+	border: 2px solid #38aadd;
+	font-family: 'Montserrat', sans-serif;
+	font-size: 16px;
+}
+#pageStory div.embedQuiz h3 {
+	font-size: 21px;
+	border-bottom: 2px solid #38aadd;
+	margin: 0;
+}
+#pageStory div.embedQuiz .question {
+	padding: 0;
+}
+#pageStory div.embedQuiz .questionOptions {
+	padding: 0;
+	margin: 0;
+}
+#pageStory div.embedQuiz .page {
+	display: none;
+}
+#pageStory div.embedQuiz .page1 {
+	display: block;
+}
+#pageStory div.embedQuiz .answer {
+	padding: 0;
+	display: none;
+}
+
 #pageStory div.embedPrinterLabel {
 	font-family: 'Montserrat', sans-serif;
 	font-size: 16px;

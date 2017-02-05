@@ -156,228 +156,6 @@ function enrichMissingData(data) {
 
 // -----------------------------------------------------------------------------
 
-function createStatistics(data) {
-	'use strict';
-
-	var obj = {
-		Bauwerk: 'Bezirk',
-		Dachart: 'Diverse',
-		Schulart: 'Bezirk',
-		Schulname: 'Lichtenberg',
-		Schulnummer: 'gesamt',
-		Strasse: '',
-		PLZ: '',
-		Gebaeudenummer: 1100000,
-		lat: 52.515807,
-		lng: 13.479470,
-		GebaeudeHoeheInM: 0,
-		GebaeudeUmfangInMAusConject: 0,
-		FensterKostenpauschale: 0,
-		FassadenKostenpauschale: 0,
-		DachKostenpauschale: 0,
-		RaeumeKostenpauschale: 0,
-		Raeume2Kostenpauschale: 0,
-		SanierungDachNotwendig: 1,
-		SanierungFassadenNotwendig: 1,
-		SanierungFensterNotwendig: 1,
-		SanierungRaeume2Notwendig: 1,
-		SanierungRaeumeNotwendig: 1,
-		SanierungTuerbreitenNotwendig: 1,
-		SanitaerSanierungsjahr: '-'
-	},
-		sum = [
-			'AufzugKosten', 'BGF', 'BWCAnzahl', 'BWCKosten', 'DachKosten', 'EingangAnzahl', 'EingangKosten',
-			'FassadenKosten', 'FensterKosten', 'FlaecheNichtSaniert', 'GF', 'GebaeudeGesamt',
-			'Grundstuecksflaeche', 'NF', 'NGF', 'Raeume2Kosten', 'RaeumeKosten', 'RampeAnzahl',
-			'RampeKosten', 'SanitaerKosten', 'Sanitaerflaeche', 'ZwischensummeBarrierefreiheitKosten',
-			'zweiterRettungswegKosten', 'Baukosten', 'Aussenanlagen'
-		],
-		sumCond = [
-			{calc: 'FensterFlaeche', condition: 'FensterKosten' /*'SanierungFensterNotwendig'*/},
-			{calc: 'FassadenFlaeche', condition: 'FassadenKosten' /*'SanierungFassadenNotwendig'*/},
-			{calc: 'FassadenFlaecheOhneFenster', condition: 'FassadenKosten' /*'SanierungFassadenNotwendig'*/},
-			{calc: 'Dachflaeche', condition: 'DachKosten' /*'SanierungDachNotwendig'*/},
-			{calc: 'TuerenKosten', condition: 'SanierungTuerbreitenNotwendig'},
-			{calc: 'RaeumeNutzflaecheBGF', condition: 'RaeumeKosten' /*'SanierungRaeumeNotwendig'*/},
-			{calc: 'Raeume2Nutzflaeche', condition: 'Raeume2Kosten' /*'SanierungRaeume2Notwendig'*/}
-		],
-		average = [
-			'FassadenFaktorFlaechenanteil', 'FensterFaktorFlaechenanteil', 'BauPrioBauwerk', 'BauPrioTGA',
-			'BauprioSumme', 'PrioritaetGesamt', 'bereitsSanierteFlaecheInProzent'
-		],
-		id,
-		len = 0;
-
-	for (id in sum) {
-		obj[sum[id]] = 0;
-	}
-	obj.FensterFlaeche = 0;
-	obj.FassadenFlaeche = 0;
-	obj.FassadenFlaecheOhneFenster = 0;
-	obj.Dachflaeche = 0;
-	obj.TuerenKosten = 0;
-	obj.RaeumeNutzflaecheBGF = 0;
-	obj.Raeume2Nutzflaeche = 0;
-	for (id in average) {
-		obj[average[id]] = 0;
-	}
-
-	try {
-		$.each(data, function (key, val) {
-			val = fixData(val);
-			if ((typeof val.lat !== 'undefined') && (typeof val.lng !== 'undefined')) {
-				var id,
-					cond;
-				for (id in val) {
-					if (-1 < $.inArray(id, sum)) {
-						obj[id] += parseInt(val[id], 10);
-					} else if (-1 < $.inArray(id, average)) {
-						obj[id] += parseInt(val[id], 10);
-					} else {
-						for (cond in sumCond) {
-							if ((sumCond[cond].calc === id) && (0 !== val[sumCond[cond].condition])) {
-								obj[id] += parseInt(val[id], 10);
-							}
-						}
-					}
-				}
-			}
-		});
-
-		len = data.length;
-		for (id in obj) {
-			if (-1 < $.inArray(id, average)) {
-				obj[id] = parseInt(obj[id] / len * 10, 10) / 10;
-			}
-		}
-
-		obj.FensterKostenpauschale = parseInt(obj.FensterKosten / obj.FensterFaktorFlaechenanteil / obj.FensterFlaeche * 100, 10) / 100;
-		obj.FassadenKostenpauschale = parseInt(obj.FassadenKosten / obj.FassadenFaktorFlaechenanteil / obj.FassadenFlaecheOhneFenster * 100, 10) / 100;
-		obj.DachKostenpauschale = parseInt(obj.DachKosten / obj.Dachflaeche * 100, 10) / 100;
-		obj.RaeumeKostenpauschale = parseInt(obj.RaeumeKosten / obj.RaeumeNutzflaecheBGF * 100, 10) / 100;
-		obj.Raeume2Kostenpauschale = parseInt(obj.Raeume2Kosten / obj.Raeume2Nutzflaeche * 100, 10) / 100;
-		obj.bereitsSanierteFlaecheInProzent = parseInt(obj.bereitsSanierteFlaecheInProzent, 10);
-
-		data.push(obj);
-	} catch (e) {
-//		console.log(e);
-	}
-}
-
-// -----------------------------------------------------------------------------
-
-function updateMapSelectItem(data) {
-	'use strict';
-
-	function setText(key, txt) {
-		var item = $('#rec' + key);
-
-		if (item.parent().hasClass('number')) {
-			txt = formatNumber(txt);
-		} else if (item.parent().hasClass('boolean')) {
-			txt = (txt === 1 ? 'ja' : 'nein');
-		}
-
-		item.text(txt);
-	}
-
-	mapAction();
-
-	var key,
-		date = new Date(),
-		dateD = date.getDate(),
-		dateM = date.getMonth() + 1,
-		dateY = date.getFullYear(),
-		dateH = date.getHours(),
-		dateMin = date.getMinutes(),
-		dateSec = date.getSeconds();
-//		strThisYear = '',
-//		intThisYear = 0,
-//		id,
-//		item,
-//		kosten = 0;
-
-	for (key in data) {
-		setText(key, data[key]);
-	}
-
-	setText('FensterKosten_', data.FensterFaktorFlaechenanteil * data.FensterFlaeche * data.FensterKostenpauschale);
-	setText('DachKosten_', data.Dachflaeche * data.DachKostenpauschale);
-	setText('FassadenKosten_', data.FassadenFaktorFlaechenanteil * (data.FassadenFlaecheOhneFenster < 0 ? 0 : data.FassadenFlaecheOhneFenster) * data.FassadenKostenpauschale);
-	setText('RaeumeKosten_', data.RaeumeNutzflaecheBGF * data.RaeumeKostenpauschale);
-	setText('Raeume2NF_', data.NF - data.Sanitaerflaeche);
-	setText('Raeume2Kosten_', data.Raeume2Nutzflaeche * data.Raeume2Kostenpauschale);
-	setText('GebaeudeGesamt_', data.FensterKosten + data.FassadenKosten + data.DachKosten + data.ZwischensummeBarrierefreiheitKosten + data.zweiterRettungswegKosten + data.RaeumeKosten + data.SanitaerKosten + data.Baukosten + data.Aussenanlagen);
-
-	setText('zweiterRettungswegKosten_', data.zweiterRettungswegKosten);
-	setText('FassadenFlaecheOhneFenster_', data.FassadenFlaecheOhneFenster);
-	setText('BGF_', data.BGF);
-	setText('Baukosten_', data.Baukosten);
-	setText('Aussenanlagen_', data.Aussenanlagen);
-
-	if (dateD < 10) {
-		dateD = '0' + dateD;
-	}
-	if (dateM < 10) {
-		dateM = '0' + dateM;
-	}
-	if (dateH < 10) {
-		dateH = '0' + dateH;
-	}
-	if (dateMin < 10) {
-		dateMin = '0' + dateMin;
-	}
-	setText('Now_', dateD + '.' + dateM + '.' + dateY + ' ' + dateH + ':' + dateMin);
-
-	setText('Bauwerk', data.Bauwerk.replace('MUR', 'Ergänzungsbau (MUR)').replace('MEB', 'Ergänzungsbau (MEB)').replace('MZG', 'Mehrzweckgebäude'));
-
-	switch (data.PrioritaetGesamt) {
-	case 1:
-		setText('PrioritaetGesamt', 'kurzfrist. Handlungsbedarf');
-		break;
-	case 2:
-		setText('PrioritaetGesamt', 'in den nächsten 3 Jahren');
-		break;
-	case 3:
-		setText('PrioritaetGesamt', 'in den nächsten 10 Jahren');
-		break;
-	case 4:
-		setText('PrioritaetGesamt', 'wünschenswert');
-		break;
-	case 5:
-		setText('PrioritaetGesamt', 'niedrig');
-		break;
-	case 6:
-		setText('PrioritaetGesamt', 'minimal');
-		break;
-	default:
-		setText('PrioritaetGesamt', data.PrioritaetGesamt);
-		break;
-	}
-
-	$('#receiptBox').css('display', 'block');
-	$('#receiptBox .finished').css('display', 1160202 === data.Gebaeudenummer ? 'block' : 'none');
-
-//	for (id in budget) {
-//		item = budget[id];
-//		if (item.Gebaeudenummer === data.Gebaeudenummer) {
-//			kosten = parseFloat(String(item.Kostenansatz).replace('.', '').replace('.', '').replace(',', '.'));
-//			if (isNaN(kosten)) {
-//				kosten = 0;
-//			}
-//			intThisYear += kosten;
-//			strThisYear += '<div class="sub"><span class="fullwrap">' + item.Beschreibung + '</span></div>';
-//			strThisYear += '<div class="sub"><span class="half">' + item.Programm + ' ' + item.Jahr + '</span><span class="number">' + formatNumber(kosten) + ' EUR</span></div>';
-//		}
-//	}
-//	if (strThisYear.length > 0) {
-//		strThisYear = '<div><span class="half">Bau- und Sanierungsprogramme</span><span class="number">' + formatNumber(intThisYear) + ' EUR</span></div>' + strThisYear;
-//	}
-//	$('#thisYear').html(strThisYear);
-}
-
-// -----------------------------------------------------------------------------
-
 function updateMapHoverItem(coordinates, data, icon) {
 	'use strict';
 
@@ -411,296 +189,6 @@ function updateMapVoidItem(data) {
 
 // -----------------------------------------------------------------------------
 
-function createMarker(data) {
-	'use strict';
-
-	try {
-		var markerSchool = L.AwesomeMarkers.icon({
-			icon: 'fa-user',
-			prefix: 'fa',
-			markerColor: 'blue'
-		}),
-			markerExtension = L.AwesomeMarkers.icon({
-				icon: 'fa-user-plus',
-				prefix: 'fa',
-				markerColor: 'blue'
-			}),
-			markerSport = L.AwesomeMarkers.icon({
-				icon: 'fa-soccer-ball-o',
-				prefix: 'fa',
-				markerColor: 'orange'
-			}),
-			markerTraffic = L.AwesomeMarkers.icon({
-				icon: 'fa-car',
-				prefix: 'fa',
-				markerColor: 'purple'
-			}),
-			markerMulti = L.AwesomeMarkers.icon({
-				icon: 'fa-building-o',
-				prefix: 'fa',
-				markerColor: 'purple'
-			}),
-			markerOthers = L.AwesomeMarkers.icon({
-				icon: 'fa-building-o',
-				prefix: 'fa',
-				markerColor: 'red'
-			});
-
-		layerGroup = L.featureGroup([]);
-		layerGroup.addTo(map);
-
-		layerGroup.addEventListener('click', function (evt) {
-			updateMapSelectItem(evt.layer.options.data);
-		});
-		layerGroup.addEventListener('mouseover', function (evt) {
-			updateMapHoverItem([evt.latlng.lat, evt.latlng.lng], evt.layer.options.data, evt.layer.options.icon);
-		});
-		layerGroup.addEventListener('mouseout', function (evt) {
-			updateMapVoidItem(evt.layer.options.data);
-		});
-
-		$.each(data, function (key, val) {
-			if ((typeof val.lat !== 'undefined') && (typeof val.lng !== 'undefined')) {
-				var isSchool   = val.Bauwerk.startsWith('Schul') || val.Bauwerk.startsWith('Hauptgebäude') || val.Bauwerk.startsWith('Altbau'),
-					isSport    = val.Bauwerk.startsWith('Sport'),
-					isExt      = val.Bauwerk.startsWith('MUR') || val.Bauwerk.startsWith('MEB'),
-					isMulti    = val.Bauwerk.startsWith('MZG'),
-					isDistrict = val.Bauwerk.startsWith('Bezirk'),
-					isTraffic  = val.Schulname.indexOf('verkehrsschule') !== -1,
-					marker = L.marker([parseFloat(val.lat), parseFloat(val.lng)], {
-						data: fixData(val),
-						icon: isTraffic ? markerTraffic :
-								isSchool ? markerSchool :
-										isSport ? markerSport :
-												isExt ? markerExtension :
-														isMulti ? markerMulti :
-																markerOthers,
-						opacity: isDistrict ? 0 : 1,
-						clickable: isDistrict ? 0 : 1
-					});
-				layerGroup.addLayer(marker);
-			}
-		});
-	} catch (e) {
-//		console.log(e);
-	}
-}
-
-// -----------------------------------------------------------------------------
-
-function selectSuggestion(selection) {
-	'use strict';
-
-	$.each(layerGroup._layers, function (key, val) {
-		if (val.options.data.Gebaeudenummer === selection) {
-			map.panTo(new L.LatLng(val.options.data.lat, val.options.data.lng));
-			updateMapSelectItem(val.options.data);
-		}
-	});
-}
-
-//-----------------------------------------------------------------------------
-
-function initSearchBox(data) {
-	'use strict';
-
-	var schools = [];
-
-	try {
-		$.each(data, function (key, val) {
-			if ((typeof val.lat !== 'undefined') && (typeof val.lng !== 'undefined')) {
-				var name = val.Schulname;
-				if ('' !== val.Schulnummer) {
-					name += ' (' + val.Schulnummer + ')';
-				}
-				schools.push({ value: name, data: val.Gebaeudenummer, color: '', desc: val.Bauwerk });
-			}
-		});
-	} catch (e) {
-//		console.log(e);
-	}
-
-	schools.sort(function (a, b) {
-		if (a.value === b.value) {
-			return a.data > b.data ? 1 : -1;
-		}
-
-		return a.value > b.value ? 1 : -1;
-	});
-
-	$('#autocomplete').focus(function () {
-		mapAction();
-
-		window.scrollTo(0, 0);
-		document.body.scrollTop = 0;
-		$('#pageMap').animate({
-			scrollTop: parseInt(0, 10)
-		}, 500);
-	});
-	$('#autocomplete').autocomplete({
-		lookup: schools,
-		onSelect: function (suggestion) {
-			selectSuggestion(suggestion.data);
-		},
-		formatResult: function (suggestion, currentValue) {
-			var isSchool   = suggestion.desc.startsWith('Schul') || suggestion.desc.startsWith('Hauptgebäude') || suggestion.desc.startsWith('Altbau'),
-				isSport    = suggestion.desc.startsWith('Sport'),
-				isExt      = suggestion.desc.startsWith('MUR') || suggestion.desc.startsWith('MEB'),
-				isMulti    = suggestion.desc.startsWith('MZG'),
-				isDistrict = suggestion.desc.startsWith('Bezirk'),
-				isTraffic  = suggestion.value.indexOf('verkehrsschule') !== -1,
-				color = isTraffic ? 'purple' :
-							isSchool ? 'blue' :
-								isSport ? 'orange' :
-										isExt ? 'blue' :
-												isMulti ? 'purple' :
-														isDistrict ? 'gray' :
-																'red',
-				icon  = isTraffic ? 'fa-car' :
-							isSchool ? 'fa-user' :
-								isSport ? 'fa-soccer-ball-o' :
-										isExt ? 'fa-user-plus' :
-												isMulti ? 'fa-building-o' :
-														isDistrict ? 'fa-institution' :
-																'fa-building-o',
-				str = '';
-
-			str += '<div class="autocomplete-icon back' + color + '"><i class="fa ' + icon + '" aria-hidden="true"></i></div>';
-			str += '<div>' + suggestion.value.replace(new RegExp(currentValue.replace(/[\-\[\]\/\{\}\(\)\*\+\?\.\\\^\$\|]/g, "\\$&"), 'gi'), '<strong>' + currentValue + '</strong>') + '</div>';
-			str += '<div class="' + color + '">' + suggestion.desc + '</div>';
-			return str;
-		},
-		showNoSuggestionNotice: true,
-		noSuggestionNotice: '<i class="fa fa-info-circle" aria-hidden="true"></i> Sie können hier nur nach Schulen aus Lichtenberg suchen'
-	});
-}
-
-// -----------------------------------------------------------------------------
-
-function printerLabelClick() {
-	if (location.pathname.replace(/^\//, '') === this.pathname.replace(/^\//, '') && (location.hostname === this.hostname)) {
-		var hash = this.hash,
-			schoolId = hash.lastIndexOf('='),
-			target;
-
-		if (-1 === schoolId) {
-			schoolId = '';
-		} else {
-			hash = this.hash.substr(0, schoolId);
-			schoolId = this.hash.substr(schoolId + 1);
-		}
-
-		target = $(hash);
-		target = target.length ? target : $('[name=' + hash.slice(1) + ']');
-		if (target.length) {
-			if ('#pageStory' === hash) {
-				$('#scrollDownPane').css('display', 'none');
-			}
-			$('#pageMap').animate({
-				scrollTop: parseInt(target.offset().top, 10)
-			}, 500, function () {
-				selectSuggestion(parseInt(schoolId, 10));
-			});
-			return false;
-		}
-	}
-}
-
-// -----------------------------------------------------------------------------
-
-function selectPrinterLabel(name) {
-	'use strict';
-
-	$('.embedPrinterLabel a').removeClass('selected');
-	$('.embedPrinterLabel a#' + name).addClass('selected');
-
-	var vec = [],
-		html = '',
-		degrees = ['rotate10', 'rotate5', '', 'rotateMin5', 'rotateMin10'],
-		isSchool,
-		isSport,
-		isExt,
-		isMulti,
-		isDistrict,
-		isTraffic,
-		color,
-		rotate,
-		i;
-
-	$.each(layerGroup._layers, function (key, val) {
-		var amount = 0;
-
-		if ('Bezirk' === val.options.data.Schulart) {
-			return true;
-		}
-		if ('school' === name) {
-			isSchool   = val.options.data.Bauwerk.startsWith('Schul') || val.options.data.Bauwerk.startsWith('Hauptgebäude') || val.options.data.Bauwerk.startsWith('Altbau');
-			isExt      = val.options.data.Bauwerk.startsWith('MUR') || val.options.data.Bauwerk.startsWith('MEB');
-			isTraffic  = val.options.data.Schulname.indexOf('verkehrsschule') !== -1;
-
-			if (isTraffic) {
-				return true;
-			}
-			if (isSchool || isExt) {
-				amount = fixEuro(val.options.data.GebaeudeGesamt);
-			}
-		} else if ('sport' === name) {
-			isSchool   = val.options.data.Bauwerk.startsWith('Schul') || val.options.data.Bauwerk.startsWith('Hauptgebäude') || val.options.data.Bauwerk.startsWith('Altbau');
-			isSport    = val.options.data.Bauwerk.startsWith('Sport');
-			isTraffic  = val.options.data.Schulname.indexOf('verkehrsschule') !== -1;
-
-			if (isTraffic || isSchool) {
-				return true;
-			}
-			if (isSport) {
-				amount = fixEuro(val.options.data.GebaeudeGesamt);
-			}
-		} else if ('room' === name) {
-			amount = fixEuro(val.options.data.RaeumeKosten);
-		} else if ('outdoor' === name) {
-			amount = fixEuro(val.options.data.Aussenanlagen);
-		} else if ('sanitary' === name) {
-			amount = fixEuro(val.options.data.SanitaerKosten);
-		}
-
-		vec.push({amount: amount, data: val.options.data});
-	});
-	vec.sort(function (a, b) {
-		return b.amount - a.amount;
-	});
-
-	for (i = 0; i < 9; ++i) {
-		isSchool   = vec[i].data.Bauwerk.startsWith('Schul') || vec[i].data.Bauwerk.startsWith('Hauptgebäude') || vec[i].data.Bauwerk.startsWith('Altbau');
-		isSport    = vec[i].data.Bauwerk.startsWith('Sport');
-		isExt      = vec[i].data.Bauwerk.startsWith('MUR') || vec[i].data.Bauwerk.startsWith('MEB');
-		isMulti    = vec[i].data.Bauwerk.startsWith('MZG');
-		isDistrict = vec[i].data.Bauwerk.startsWith('Bezirk');
-		isTraffic  = vec[i].data.Schulname.indexOf('verkehrsschule') !== -1;
-		color = isTraffic ? 'purple' :
-					isSchool ? 'blue' :
-						isSport ? 'orange' :
-								isExt ? 'blue' :
-										isMulti ? 'purple' :
-												isDistrict ? 'gray' :
-														'red';
-		rotate = degrees[Math.floor(Math.random() * degrees.length)];
-
-		html += '<a href="#pageMap=' + vec[i].data.Gebaeudenummer;
-		html += '"><div class="leaflet-popup-content-wrapper ' + rotate;
-		html += '" style="transform: rotate(' + (parseInt((Math.random() * 200) - 100, 10) / 10);
-		html += 'deg)"><div class="leaflet-popup-content"><div class="top ' + color;
-		html += '">' + vec[i].data.Schulname;
-		html += '</div><div class="middle">€' + formatNumber(vec[i].amount);
-		html += '</div><div class="bottom ' + color;
-		html += '">' + vec[i].data.Bauwerk;
-		html += '</div></div></div></a>';
-	}
-	$('.embedPrinterLabel .canvas').html(html);
-	$('.embedPrinterLabel a[href*="#"]:not([href="#"])').click(printerLabelClick);
-}
-
-// -----------------------------------------------------------------------------
-
 function initSocialMedia() {
 	'use strict';
 
@@ -722,37 +210,33 @@ function initSocialMedia() {
 
 // -----------------------------------------------------------------------------
 
-function initMap(elementName, lat, lng, zoom) {
+function initQuiz() {
 	'use strict';
 
-	if (null === map) {
-		var mapboxToken = 'pk.eyJ1IjoidHVyc2ljcyIsImEiOiI1UWlEY3RNIn0.U9sg8F_23xWXLn4QdfZeqg',
-			mapboxTiles = L.tileLayer('https://{s}.tiles.mapbox.com/v4/tursics.l7ad5ee8/{z}/{x}/{y}.png?access_token=' + mapboxToken, {
-				attribution: '<a href="http://www.openstreetmap.org" target="_blank">OpenStreetMap-Mitwirkende</a>, <a href="https://www.mapbox.com" target="_blank">Mapbox</a>'
-			}),
-			dataUrl = 'data/gebaeudescan.json';
-
-		map = L.map(elementName, {zoomControl: false, scrollWheelZoom: false})
-			.addLayer(mapboxTiles)
-			.setView([lat, lng], zoom);
-
-		map.addControl(L.control.zoom({ position: 'bottomright'}));
-		map.once('focus', mapAction);
-
-		$.getJSON(dataUrl, function (data) {
-			data = enrichMissingData(data);
-			createStatistics(data);
-			createMarker(data);
-			initSearchBox(data);
-			selectPrinterLabel('school');
-			initSocialMedia();
-
-//			var budgetUrl = 'data/gebaeudesanierungen.json';
-//			$.getJSON(budgetUrl, function (budgetData) {
-//				budget = budgetData;
-//			});
-		});
-	}
+	$('.embedQuiz .page1 .questionOptions a').on('click', function (e) {
+		$('.embedQuiz .page1 .answer').show();
+	});
+	$('.embedQuiz .page2 .questionOptions a').on('click', function (e) {
+		$('.embedQuiz .page2 .answer').show();
+	});
+	$('.embedQuiz .page3 .questionOptions a').on('click', function (e) {
+		$('.embedQuiz .page3 .answer').show();
+	});
+	$('.embedQuiz .page4 .questionOptions a').on('click', function (e) {
+		$('.embedQuiz .page4 .answer').show();
+	});
+	$('.embedQuiz .page1 .answer a').on('click', function (e) {
+		$('.embedQuiz .page1').hide();
+		$('.embedQuiz .page2').show();
+	});
+	$('.embedQuiz .page2 .answer a').on('click', function (e) {
+		$('.embedQuiz .page2').hide();
+		$('.embedQuiz .page3').show();
+	});
+	$('.embedQuiz .page3 .answer a').on('click', function (e) {
+		$('.embedQuiz .page3').hide();
+		$('.embedQuiz .page4').show();
+	});
 }
 
 // -----------------------------------------------------------------------------
@@ -771,6 +255,7 @@ $(document).on("pageshow", "#pageMap", function () {
 
 	// center the city hall
 //	initMap('mapContainer', 52.515807, 13.479470, 16);
+	initQuiz();
 
 	$('#autocomplete').val('');
 	$('#receipt .group').on('click', function (e) {
@@ -802,7 +287,7 @@ $(document).on("pageshow", "#pageMap", function () {
 $(function () {
 	'use strict';
 
-	$('a[href*="#"]:not([href="#"])').click(printerLabelClick);
+//	$('a[href*="#"]:not([href="#"])').click(printerLabelClick);
 });
 
 // -----------------------------------------------------------------------------
