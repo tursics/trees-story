@@ -830,6 +830,24 @@
 	display: none;
 }
 
+#pageStory div.embedSpending {
+	background: #f1f8fc;
+	border: 2px solid #38aadd;
+	font-family: 'Montserrat', sans-serif;
+	font-size: 16px;
+}
+#pageStory div.embedSpending .ui-slider {
+	padding-top: 0;
+	margin: 0;
+}
+#pageStory div.embedSpending .answer {
+	display: none;
+}
+
+.hideSecondPart .secondPart {
+	color: #ddd;
+}
+
 #pageStory div.embedPrinterLabel {
 	font-family: 'Montserrat', sans-serif;
 	font-size: 16px;

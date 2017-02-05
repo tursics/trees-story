@@ -257,24 +257,13 @@ $(document).on("pageshow", "#pageMap", function () {
 //	initMap('mapContainer', 52.515807, 13.479470, 16);
 	initQuiz();
 
-	$('#autocomplete').val('');
-	$('#receipt .group').on('click', function (e) {
-		$(this).toggleClass('groupClosed');
+	$('.embedSpending a.continue').on('click', function (e) {
+		$(this).hide();
+		$('.embedSpendingHint').hide();
+		$('.embedSpending .answer').show();
+		$('body').removeClass('hideSecondPart');
 	});
-	$('#receiptClose').on('click', function (e) {
-		$('#receiptBox').css('display', 'none');
-	});
-	$('#searchBox .sample a:nth-child(1)').on('click', function (e) {
-		$('#autocomplete').val('Obersee-Schule (11G19)');
-		selectSuggestion(1111901);
-	});
-	$('#searchBox .sample a:nth-child(2)').on('click', function (e) {
-		$('#autocomplete').val('Lichtenberg');
-		selectSuggestion(1100000);
-	});
-	$('.embedPrinterLabel a').on('click', function (e) {
-		selectPrinterLabel($(this).prop('id'));
-	});
+
 	$('.embedInfo').addClass('shrink');
 	$('.embedInfo .showMore').on('click', function (e) {
 		e.preventDefault();

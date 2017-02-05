@@ -58,7 +58,7 @@
 	<meta name="msapplication-TileImage" content="/assets/ms-icon-144x144.png">
 	<meta name="theme-color" content="#ffffff">
 </head>
-<body>
+<body class="hideSecondPart">
 	<div data-role="page" id="pageMap">
 		<div role="main" class="ui-content" id="mapContainer"></div>
 		<div id="headerBox" class="big">
@@ -158,24 +158,28 @@
 				Seit dem Start der Spendenaktion 2012 sind so bereits <a href="http://www.stadtentwicklung.berlin.de/umwelt/stadtgruen/stadtbaeume/kampagne/start.shtml">719.000 Euro</a> zusammen gekommen.
 				Wie viel wären sie bereit, für einen fehlenden Baum vor ihrer Haustür zu spenden?
 			</div>
-			<div class="embedSlider">
+			<div class="embedSpending">
+				<div>Ich wäre bereit für einen Baum zu spenden...</div>
 				<input type="range" name="slider-1" id="slider-1" value="20" min="0" max="600" />
-				<a href="#" data-role="button" data-theme="b" data-inline="true">weiter</a>	
-				<div>xx % würden mehr spenden als sie</div>
+				<a href="#" class="continue" data-role="button" data-theme="b" data-inline="true">weiter</a>	
+				<div class="answer">12% würden mehr spenden als Sie</div>
 			</div>
-			<div>
+			<div class="embedSpendingHint">
+				Bitte beantworten Sie die Frage, danach geht es hier weiter...
+			</div>
+			<div class="secondPart">
 				Die Stadtbaumkampagne zählt rund 440.000 Straßenbäumen in Berlin, die offizielle Liste mit allen Straßenbäumen dagegen nur etwas mehr als 330.000 Bäume.
 				Wie kommt diese Differenz zustande?
 				Zuständig sind die Straßen- und Grünflächenämter der einzelnen Bezirke.
 				Und nicht jeder Bezirk scheint die digitale Inventur ihrer Bäume so vorbildlich wie Steglitz-Zehlendorf zu nehmen.
 			</div>
-			<div>
+			<div class="secondPart">
 				So gibt es in Treptow-Köpenick genau 436 Bäume an den Straßen.
 				Also, es gibt mehr, sie sind nur nicht erfasst worden.
 				Auffällig ist auch der Doppelbezirk Marzahn-Hellersdorf: In Marzahn stehen Bäume, in Hellerdorf kein einziger.
 				Und auch ein großes Gebiet um den Ostbahnhof im Bezirk Friedrichshain-Kreuzberg scheint baumfrei zu sein.
 			</div>
-			<div class="embedTable">
+			<div class="embedTable secondPart">
 				<h3>Die Baumverteilung</h3>
 				<table>
 					<tr><th>Bezirk</th><th>Straßenbäume</th></tr>
@@ -194,13 +198,13 @@
 				</table>
 				<div>Die Verteilung der Straßenbäume ist sehr ungleichmäßig. Oder besser: die Erfassung der Straßenbäume ist ungleichmäßig</div>
 			</div>
-			<div>
+			<div class="secondPart">
 				Straßenbäume sind natürlich nicht alles.
 				Es gibt noch 164.000 (erfasste) Anlagenbäume, also Bäume in Parks und öffentlichen Grün- und Erholungsanlagen, ungezählte Bäume auf Friedhöfen, Sportanlagen und Flächen von Freibädern.
 				Die meisten Bäume stehen aber wohl auf Waldflächen.
 				Diese sind im Sinne des Landeswaldgesetzes von den Berliner Forsten aber nicht erfasst.
 			</div>
-			<div>
+			<div class="secondPart">
 				A pro pos erfasst.
 				Erfasst werden die meisten Daten per Hand.
 				Hin und wieder schleichen sich so Übertragungsfehler ein.
@@ -211,7 +215,7 @@
 				<div>Wie hoch ist der größte Baum?</div>
 				<div>0m .. 100m .. 200m .. 300m .. 368m</div>
 			</div>
-			<div>
+			<div class="secondPart">
 				Der höchste Baum ist mir 12.600 Metern angegeben.
 				Zum Vergleich: Das ist die Reiseflughöhe von Düsenverkehrsflugzeugen.
 				Insgesamt sind wohl 57 Bäume höher als der Fernsehtum mit seinen 368 Metern.
@@ -220,7 +224,7 @@
 				<div>Welchen Umfang hat der breiteste Baum?</div>
 				<div>0m .. 100m .. 200m .. 300m .. 368m</div>
 			</div>
-			<div>
+			<div class="secondPart">
 				Der breiteste Baum hat laut den vorliegenden Zahlen einen Umfang von exakt 325 Metern (knapp gefolgt vom zweitplatzierten mit 305 Metern).
 				325 Metern im Durchmesser entspricht einem Kreis mit über 100 Meter in der Breite.
 				Oder anders ausgedrückt, der Baum würde in voller Schönheit und (Stamm-)Breite aus dem Dach des Sony-Centers herauswachsen.
@@ -229,7 +233,7 @@
 				<div>Welchen Kronendurchmesser hat der voluminöseste Baum?</div>
 				<div>0m .. 100m .. 200m .. 300m .. 368m</div>
 			</div>
-			<div>
+			<div class="secondPart">
 				Schlappe 500 Meter hat die breiteste Baumkrone im Durchmesser.
 				Stände dieser Baum an Stelle des Fernsehturms, würde er sein Blätterdach vom Roten Rathaus bis zum Kaufhof spannen.
 			</div>
