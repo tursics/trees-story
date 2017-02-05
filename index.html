@@ -72,19 +72,6 @@
 			<h1>Der Berlin-Baum</h1>
 			<div>In Berlin stehen hunterttausende Bäume rum. Wir haben den typischen Berliner Baum gesucht und sind fündig geworden. Alles über diesen und weitere Baum-Geschichten...</div>
 		</div>
-		<div id="searchBox" class="big">
-			<h3>Prägnant</h3>
-			<div class="sample">
-				Zum Beispiel: <a href="#">Foo</a>, <a href="#">Foo</a>
-			</div>
-			<div class="searchInput">
-				<input type="text" name="schools" id="autocomplete" placeholder="Geben Sie Foo ein" />
-				<div><i class="fa fa-search" aria-hidden="true"></i></div>
-			</div>
-		</div>
-		<div id="scrollDownPane">
-			<a href="#pageStory"><i class="fa fa-angle-double-down" aria-hidden="true"></i></a>
-		</div>
 		<div id="pageStory">
 			<div>
 				Das ist er, der Durschnittsbaum in Berlin:
@@ -105,6 +92,33 @@
 				Viel Platz hat der Baum nicht.
 				Es geht ihm aber besser, als viele seiner Nachbarbäume, die für den Neubaun hinter dem Bauzaun weichen mussten.
 			</div>
+			<div class="embedQuiz">
+				Kleines Quiz: Wieviel ist ein Baum wert?
+				<div>
+					<div>Einwohner pro Baum</div>
+					<input type="range" name="slider-1" id="slider-1" value="1" min="1" max="20" />
+					<a href="#" data-role="button" data-theme="b" data-inline="true">weiter</a>	
+					<div><a href="https://de.wikipedia.org/wiki/Berliner_Statistiken">10,6</a> Einwohner pro Baum</div>
+				</div>
+				<div>
+					<div>Autos pro Baum</div>
+					<input type="range" name="slider-1" id="slider-1" value="1" min="1" max="20" />
+					<a href="#" data-role="button" data-theme="b" data-inline="true">weiter</a>	
+					<div><a href="https://de.statista.com/statistik/daten/studie/255179/umfrage/bestand-an-pkw-in-berlin/">3,5</a> Autos pro Baum</div>
+				</div>
+				<div>
+					<div>Häuser pro Baum</div>
+					<input type="range" name="slider-1" id="slider-1" value="1" min="1" max="20" />
+					<a href="#" data-role="button" data-theme="b" data-inline="true">weiter</a>	
+					<div><a href="http://www.businesslocationcenter.de/berlin3d-downloadportal/documents/terms.de.html">1,5</a> Häuser pro Baum</div>
+				</div>
+				<div>
+					<div>Straße (km) pro Baum</div>
+					<input type="range" name="slider-1" id="slider-1" value="1" min="1" max="20" />
+					<a href="#" data-role="button" data-theme="b" data-inline="true">weiter</a>	
+					<div><a href="http://cab-log.blogspot.de/2010/01/straenkilometer-in-berlin.html">16,1</a> Straße (km) pro Baum</div>
+				</div>
+			</div>
 			<div class="embedImage">
 				<img src="./assets/stadtbaeume.jpg" alt="Alt.Text zum Bild">
 				<div>Die Kampagne <a href="http://www.stadtentwicklung.berlin.de/umwelt/stadtgruen/stadtbaeume/kampagne/index.shtml">Stadtbäume für Berlin</a> sammelt Spenden für 10.000 neue Bäume</div>
@@ -122,8 +136,8 @@
 				Wie viel wären sie bereit, für einen fehlenden Baum vor ihrer Haustür zu spenden?
 			</div>
 			<div class="embedSlider">
-				<div>[Slider]</div>
-				<div>0 .. 100 .. 200 .. 300 .. 400 .. 500 .. 600</div>
+				<input type="range" name="slider-1" id="slider-1" value="50" min="0" max="600" />
+				<a href="#" data-role="button" data-theme="b" data-inline="true">weiter</a>	
 				<div>xx % würden mehr spenden als sie</div>
 			</div>
 			<div>
@@ -211,11 +225,8 @@
 			</div>
 			<div class="embedCredits">
 				Die Rohdaten zu diesem Artikel können Sie <a href="https://daten.berlin.de/datensaetze/baumbestand-berlin-stra%C3%9Fenb%C3%A4ume-wfs" target="_blank">hier ansehen</a> oder <a href="https://github.com/tursics/trees-story/blob/master/data/re_strassenbaeume.tsv" target="_blank">hier ansehen</a> und herunterladen (Quelle: Senatsverwaltung für Stadtentwicklung und Umwelt Berlin. Stand: 01.03.2016).
-				Haben Sie eine Anmerkung oder einen Fehler entdeckt, dann freue ich mich über <a href="mailto:thomas@tursics.de">Ihre Mail</a>.
-			</div>
-			<div class="embedAuthor">
-				Von <a href="https://twitter.com/tursics/" target="_blank">Thomas Tursics</a><br>
-				Made with <i class="fa fa-heart" aria-hidden="true"></i> + <a href="https://github.com/tursics/trees-story" target="_blank"><i class="fa fa-github" aria-hidden="true"></i></a> in Berlin, xx.xx.2017
+				Haben Sie eine Anmerkung oder einen Fehler entdeckt, dann freuen wir uns über <a href="mailto:thomas@tursics.de">Ihre Mail</a>.
+				Entwickelt von <a href="https://twitter.com/tursics/" target="_blank">Thomas Tursics</a>, 06.02.2017.
 			</div>
 		</div>
 	</div>

@@ -770,7 +770,7 @@ $(document).on("pageshow", "#pageMap", function () {
 	'use strict';
 
 	// center the city hall
-	initMap('mapContainer', 52.515807, 13.479470, 16);
+//	initMap('mapContainer', 52.515807, 13.479470, 16);
 
 	$('#autocomplete').val('');
 	$('#receipt .group').on('click', function (e) {
