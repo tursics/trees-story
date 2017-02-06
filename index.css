@@ -241,7 +241,7 @@ body, .ui-overlay-a, .ui-page-theme-a {
 }
 
 #pageStory {
-	background: #f9f9f9;
+	background: #fff;
 	font-family: 'Noto Serif', serif;
 	font-size: 18px;
 	max-width: 38em;
@@ -264,7 +264,7 @@ body, .ui-overlay-a, .ui-page-theme-a {
 	margin: 0 1em;
 }
 #pageStory a {
-	color: #38aadd;
+	color: #ce0000;
 	text-decoration: none;
 	font-weight: 400;
 }
@@ -348,15 +348,20 @@ body, .ui-overlay-a, .ui-page-theme-a {
 }
 
 #pageStory div.embedQuiz {
-	background: #f1f8fc;
-	border: 2px solid #38aadd;
+	background: #ede6c2;
 	font-family: 'Montserrat', sans-serif;
 	font-size: 16px;
+	padding: 0;
 }
 #pageStory div.embedQuiz h3 {
+	background: #e6e18d;
 	font-size: 21px;
-	border-bottom: 2px solid #38aadd;
-	margin: 0;
+	margin: 0 auto;
+	color: #fff;
+	display: table;
+	border-radius: 0 0 1em 1em;
+	padding: 0 2em;
+	font-weight: 300;
 }
 #pageStory div.embedQuiz .question {
 	padding: 0;
@@ -364,6 +369,17 @@ body, .ui-overlay-a, .ui-page-theme-a {
 #pageStory div.embedQuiz .questionOptions {
 	padding: 0;
 	margin: 0;
+	text-align: center;
+}
+#pageStory div.embedQuiz .questionOptions a {
+	background: #efede4;
+	border-color: #900;
+	text-shadow: none;
+}
+#pageStory div.embedQuiz .questionOptions a {
+	background: #efede4;
+	border-color: #900;
+	text-shadow: none;
 }
 #pageStory div.embedQuiz .page {
 	display: none;
@@ -374,6 +390,12 @@ body, .ui-overlay-a, .ui-page-theme-a {
 #pageStory div.embedQuiz .answer {
 	padding: 0;
 	display: none;
+}
+
+#pageStory .answer a.ui-btn {
+	background: #900;
+	color: #fff;
+	border: none;
 }
 
 #pageStory div.embedSpending, #pageStory div.embedGuessing {
