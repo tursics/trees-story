@@ -15,3 +15,7 @@ Es gibt einige Statistiken und interaktive Elemente in dem Artikel.
 # build
 
 npm install tsv
+
+# Lizenzen
+
+Der Quelltext steht unter der MIT-Lizense, das eine Bild unter CC-0-Lizense.
