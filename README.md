@@ -1,4 +1,4 @@
-# Der Berlin-Baum
+# Großstadt-Baum
 
 Dieses Projekt ist ein Copytest. Im Ergebnis ist eine interaktive Webseite entstanden.
 
@@ -237,4 +237,4 @@ Ideal trees:
 
 # Lizenzen
 
-Der Quelltext steht unter der MIT-Lizense, das eine Bild unter CC-0-Lizense.
+Der Quelltext steht unter der MIT-Lizenz, das eine Bild unter CC-0-Lizenz.
