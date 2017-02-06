@@ -392,17 +392,32 @@ body, .ui-overlay-a, .ui-page-theme-a {
 	display: none;
 }
 
-#pageStory .answer a.ui-btn {
+#pageStory .answer a.ui-btn, #pageStory a.continue.ui-btn {
 	background: #900;
 	color: #fff;
 	border: none;
 }
+#pageStory .ui-slider input {
+	background: #efede4;
+	border-color: #900;
+	color: #900;
+}
+#pageStory .ui-slider-track {
+	padding: 0;
+	background: #efede4;
+	border-color: #900;
+}
+#pageStory .ui-slider-handle {
+	padding: 0;
+	border-color: #900;
+	background: #900;
+}
 
 #pageStory div.embedSpending, #pageStory div.embedGuessing {
-	background: #f1f8fc;
-	border: 2px solid #38aadd;
+	background: #ede6c2;
 	font-family: 'Montserrat', sans-serif;
 	font-size: 16px;
+	padding: 0 0 .5em 0;
 }
 #pageStory div.embedSpending .ui-slider, #pageStory div.embedGuessing .ui-slider {
 	padding-top: 0;
