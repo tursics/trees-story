@@ -601,17 +601,22 @@ body, .ui-overlay-a, .ui-page-theme-a {
 
 	#pageStory div.embedTable {
 		padding: 0;
-		margin: 0 -.1em;
+		margin: 0;
+		border: none;
+	}
+	#pageStory div.embedTable h3 {
+		margin: 1em 0 0 0;
+		padding-left: .8em;
 	}
 	#pageStory div.embedTable table {
 		width: 100%;
 		border-left: none;
 		border-right: none;
 		border-radius: 0;
-		padding: 1em 0;
+		padding: .2em 0;
 	}
 	#pageStory div.embedTable div {
-		padding: 1.5em 1.5em 0 1.5em;
+		padding: .5em 1.5em 1em 1.5em;
 	}
 
 	#pageStory div.embedImage {
