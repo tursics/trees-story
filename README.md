@@ -1,11 +1,17 @@
-# trees-story
+# Der Berlin-Baum
 
+Dieses Projekt ist ein Copytest. Im Ergebnis ist eine interaktive Webseite entstanden.
+
+<img src="https://raw.githubusercontent.com/tursics/trees-story/master/assets/screenshot-1.png" width="300">
+
+Die Grundlage ist ein Datensatz über Straßenbäume aus dem Open Data Portal Berlins.
+
+<img src="https://raw.githubusercontent.com/tursics/trees-story/master/assets/screenshot-2.png" width="300">
+
+Es gibt einige Statistiken und interaktive Elemente in dem Artikel.
+
+<img src="https://raw.githubusercontent.com/tursics/trees-story/master/assets/screenshot-3.png" width="300">
 
 # build
 
-download and build mapnik: <del>http://mapnik.org/pages/downloads.html</del>, <del>https://github.com/mapnik/mapnik/wiki/MacInstallation_Homebrew</del> or this https://github.com/mapnik/node-mapnik with
-
-npm install mapnik@3.x
 npm install tsv
-
-read http://wiki.openstreetmap.org/wiki/Mapnik
