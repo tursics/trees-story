@@ -1,12 +1,7 @@
 /* trees-story.tursics.de - JavaScript file */
 
 /*jslint browser: true*/
-/*global $,L*/
-
-var map = null;
-var layerPopup = null;
-var layerGroup = null;
-//var budget = null;
+/*global $*/
 
 // -----------------------------------------------------------------------------
 
@@ -15,177 +10,6 @@ String.prototype.startsWith = String.prototype.startsWith || function (prefix) {
 
 	return this.indexOf(prefix) === 0;
 };
-
-// -----------------------------------------------------------------------------
-
-function mapAction() {
-	'use strict';
-
-	$('#headerBox').removeClass('big');
-	$('#searchBox').removeClass('big');
-	$('#scrollDownPane').css('display', 'none');
-	map.scrollWheelZoom.enable();
-}
-
-// -----------------------------------------------------------------------------
-
-function fixEuro(item) {
-	'use strict';
-
-	if (item === '') {
-		return 0;
-	} else if (item === null) {
-		return 0;
-	} else if ('number' === typeof item) {
-		return item;
-	} else if ('T€' === item.substring(item.length - 2)) {
-		return parseInt(item.substring(0, item.length - 2).replace('.', '').replace(',', '.'), 10) * 1000;
-	}
-	return item;
-}
-
-// -----------------------------------------------------------------------------
-
-function fixData(val) {
-	'use strict';
-
-	function fixComma(item) {
-		if (item === '') {
-			return 0;
-		} else if (item === null) {
-			return 0;
-		}
-		return parseFloat(String(item).replace('.', '').replace(',', '.'));
-	}
-
-	val.NGF = parseInt(val.NGF, 10);
-	val.BGF = fixComma(val.BGF);
-	val.NF = fixComma(val.NF);
-	val.Grundstuecksflaeche = fixComma(val.Grundstuecksflaeche);
-	val.GebaeudeHoeheInM = fixComma(val.GebaeudeHoeheInM);
-	val.GebaeudeUmfangInMAusConject = fixComma(val.GebaeudeUmfangInMAusConject);
-	val.FassadenFlaeche = fixComma(val.FassadenFlaeche);
-	val.Dachflaeche = fixComma(val.Dachflaeche);
-	val.BWCAnzahl = fixComma(val.BWCAnzahl);
-	val.RaeumeNutzflaecheBGF = parseInt(val.RaeumeNutzflaecheBGF, 10);
-	val.Sanitaerflaeche = fixComma(val.Sanitaerflaeche);
-	val.bereitsSanierteFlaecheInProzent = fixComma(val.bereitsSanierteFlaecheInProzent);
-
-	val.FensterKosten = fixEuro(val.FensterKosten);
-	val.FassadenKosten = fixEuro(val.FassadenKosten);
-	val.DachKosten = fixEuro(val.DachKosten);
-	val.AufzugKosten = fixEuro(val.AufzugKosten);
-	val.RampeKosten = fixEuro(val.RampeKosten);
-	val.EingangKosten = fixEuro(val.EingangKosten);
-	val.TuerenKosten = fixEuro(val.TuerenKosten);
-	val.BWCKosten = fixEuro(val.BWCKosten);
-	val.ZwischensummeBarrierefreiheitKosten = fixEuro(val.ZwischensummeBarrierefreiheitKosten);
-	val.zweiterRettungswegKosten = fixEuro(val.zweiterRettungswegKosten);
-	val.RaeumeKosten = fixEuro(val.RaeumeKosten);
-	val.Raeume2Kosten = fixEuro(val.Raeume2Kosten);
-	val.SanitaerKosten = fixEuro(val.SanitaerKosten);
-	val.GebaeudeGesamt = fixEuro(val.GebaeudeGesamt);
-
-	if (val.SanitaerSanierungsjahr === 0) {
-		val.SanitaerSanierungsjahr = '-';
-	} else if (val.SanitaerSanierungsjahr === null) {
-		val.SanitaerSanierungsjahr = '-';
-	}
-
-	return val;
-}
-
-// -----------------------------------------------------------------------------
-
-function formatNumber(txt) {
-	'use strict';
-
-	txt = String(parseInt(txt, 10));
-	var sign = '',
-		pos = 0;
-	if (txt[0] === '-') {
-		sign = '-';
-		txt = txt.slice(1);
-	}
-
-	pos = txt.length;
-	while (pos > 3) {
-		pos -= 3;
-		txt = txt.slice(0, pos) + '.' + txt.slice(pos);
-	}
-
-	return sign + txt;
-}
-
-// -----------------------------------------------------------------------------
-
-function enrichMissingData(data) {
-	'use strict';
-
-	try {
-		$.each(data, function (key, value) {
-			var val = fixData(value),
-				sum1 = 0,
-				sum2 = 0,
-				diff = 0,
-				isSport = false,
-				isSchool = false;
-			if ((typeof val.lat !== 'undefined') && (typeof val.lng !== 'undefined')) {
-				sum1 = val.GebaeudeGesamt;
-				sum2 = val.FensterKosten + val.FassadenKosten + val.DachKosten + val.ZwischensummeBarrierefreiheitKosten + val.zweiterRettungswegKosten + val.RaeumeKosten + val.SanitaerKosten;
-				diff = sum1 - sum2;
-				isSport = val.Bauwerk.startsWith('Sport');
-				isSchool = !isSport && (val.Bauwerk.indexOf('chul') !== -1);
-
-				val.Aussenanlagen = 0;
-				val.Baukosten = 0;
-
-				if (isSchool && (diff > 1000)) {
-					val.Aussenanlagen = diff;
-				} else if (isSport && (diff > 1000)) {
-					val.Baukosten = diff;
-				}
-			}
-		});
-	} catch (e) {
-//		console.log(e);
-	}
-
-	return data;
-}
-
-// -----------------------------------------------------------------------------
-
-function updateMapHoverItem(coordinates, data, icon) {
-	'use strict';
-
-	var options = {
-		closeButton: false,
-		offset: L.point(0, -32),
-		className: 'printerLabel'
-	},
-		str = '';
-
-	str += '<div class="top ' + icon.options.markerColor + '">' + data.Schulname + '</div>';
-	str += '<div class="middle">€' + formatNumber(data.GebaeudeGesamt) + '</div>';
-	str += '<div class="bottom ' + icon.options.markerColor + '">' + data.Bauwerk + '</div>';
-
-	layerPopup = L.popup(options)
-		.setLatLng(coordinates)
-		.setContent(str)
-		.openOn(map);
-}
-
-// -----------------------------------------------------------------------------
-
-function updateMapVoidItem(data) {
-	'use strict';
-
-	if (layerPopup && map) {
-		map.closePopup(layerPopup);
-		layerPopup = null;
-    }
-}
 
 // -----------------------------------------------------------------------------
 
@@ -241,35 +65,28 @@ function initQuiz() {
 	// bottom quiz
 
 	$('.embedGuessing a.guess1').on('click', function (e) {
+		$(this).hide();
 		$('body').removeClass('hideThirdPart');
 	});
 	$('.embedGuessing a.guess2').on('click', function (e) {
+		$(this).hide();
 		$('body').removeClass('hideFourthPart');
 	});
 	$('.embedGuessing a.guess3').on('click', function (e) {
+		$(this).hide();
 		$('body').removeClass('hideFivethPart');
 	});
 	$('.embedGuessing a.guess4').on('click', function (e) {
+		$(this).hide();
 		$('body').removeClass('hideSixthPart');
 	});
 }
 
 // -----------------------------------------------------------------------------
 
-$(document).on("pagecreate", "#pageMap", function () {
-	'use strict';
-
-	// center the city hall
-//	initMap( 'mapContainer', 52.515807, 13.479470, 16);
-});
-
-// -----------------------------------------------------------------------------
-
 $(document).on("pageshow", "#pageMap", function () {
 	'use strict';
 
-	// center the city hall
-//	initMap('mapContainer', 52.515807, 13.479470, 16);
 	initQuiz();
 
 	$('.embedSpending a.continue').on('click', function (e) {
@@ -284,14 +101,6 @@ $(document).on("pageshow", "#pageMap", function () {
 		e.preventDefault();
 		$(this).parent().removeClass('shrink');
 	});
-});
-
-// -----------------------------------------------------------------------------
-
-$(function () {
-	'use strict';
-
-//	$('a[href*="#"]:not([href="#"])').click(printerLabelClick);
 });
 
 // -----------------------------------------------------------------------------
