@@ -431,7 +431,7 @@ body, .ui-overlay-a, .ui-page-theme-a {
 	color: #ddd;
 }
 .hideThirdPart .thirdPart, .hideFourthPart .fourthPart, .hideFivethPart .fivethPart, .hideSixthPart .sixthPart {
-	display: none;
+	opacity: 0;
 }
 
 #pageStory div.embedPrinterLabel {
