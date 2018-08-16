@@ -246,4 +246,13 @@ Der Quelltext steht unter der MIT-Lizenz, das eine Bild unter CC-0-Lizenz.
 
 ## collect the data
 
-- run ```pip install wfs-downloader``` to install [WFS Downloader](https://github.com/codeforberlin/wfs-downloader)
+- install the [WFS Downloader](https://github.com/codeforberlin/wfs-downloader): ```pip install wfs-downloader```
+- download the tree data: ```wfs-downloader script/download-config.yml```
+
+**Nutzungsbedingungen:**
+
+```Für die Verwendung der Daten gelten folgende Nutzungsbestimmungen: http://www.stadtentwicklung.berlin.de/geoinformation/download/nutzIII.pdf - Der Quellenvermerk gemäß §2 lautet "Geoportal Berlin / [Titel des Datensatzes]".```
+
+**wfs:Title**
+
+```Baumbestand Berlin - Straßenbäume - Sachdaten zur Karte```
