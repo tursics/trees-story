@@ -238,3 +238,12 @@ Ideal trees:
 # Lizenzen
 
 Der Quelltext steht unter der MIT-Lizenz, das eine Bild unter CC-0-Lizenz.
+
+
+---
+
+2nd version of this site:
+
+## collect the data
+
+- run ```pip install wfs-downloader``` to install [WFS Downloader](https://github.com/codeforberlin/wfs-downloader)
