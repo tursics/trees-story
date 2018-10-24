@@ -99,14 +99,16 @@
 #mapContainer h1 {
 	font-family: 'Noto Serif', serif;
 	margin: 0 0 0 50%;
-	background: #6cb6c4c0;
+	background: #6cb6c4f0;
 	border-top: 2px solid #dceef1c0;
+	border-left: 2px solid #dceef1c0;
 	padding: 0 .2em;
 	font-size: 40px;
 }
 #mapContainer div div {
 	margin: 0 0 0 50%;
-	background: #6cb6c4c0;
+	background: #6cb6c4f0;
+	border-left: 2px solid #dceef1c0;
 	border-bottom: 2px solid #dceef1c0;
 	padding: .5em;
 }
@@ -291,35 +293,18 @@ body, .ui-overlay-a, .ui-page-theme-a {
 	margin: 0 auto;
 }
 
-#pageStory div.embedTable {
-	font-family: 'Montserrat', sans-serif;
-	font-size: 16px;
-	border: 1px solid #333;
-	padding: 0;
-	margin: 0 3em;
-}
-#pageStory div.embedTable h3 {
-	margin: .2em;
-	background: #dceef1;
-	color: #000;
-	display: table;
-	border-radius: 0 0 1em 0;
-	padding: 0 2em 0 .2em;
-}
 #pageStory div.embedTable table {
 	margin: 0 auto;
-	background: #fff;
 	border-spacing: 0;
 	padding: 1em;
 }
 #pageStory div.embedTable tr {
 	line-height: 1.4em;
 }
-#pageStory div.embedTable tr:nth-child(odd) {
-	background: #dceef1;
+#pageStory div.embedTable tr:nth-child(even) {
+	background: #fff;
 }
 #pageStory div.embedTable th {
-	background: #fff;
 	text-align: left;
 	border-bottom: 2px solid #6cb6c4;
 }
@@ -331,8 +316,8 @@ body, .ui-overlay-a, .ui-page-theme-a {
 }
 #pageStory div.embedTable div {
 	font-size: 12px;
-	color: #999;
-	padding: .5em 1em 0 1em;
+	color: #666;
+	padding: .5em 1.5em 0 1.5em;
 	line-height: 1.4em;
 }
 #pageStory div.embedTable td:nth-child(even) {
@@ -354,19 +339,21 @@ body, .ui-overlay-a, .ui-page-theme-a {
 	line-height: 1.4em;
 }
 
-#pageStory div.embedQuiz {
+#pageStory div.embedQuiz, #pageStory div.embedSpending, #pageStory div.embedGuessing, #pageStory div.embed {
 	background: #dceef1;
 	font-family: 'Montserrat', sans-serif;
 	font-size: 16px;
-	padding: 0;
+	margin: 0 -100em;
+	padding: 0 100em .5em 100em;
+	border-top: 2px solid #6cb6c4;
 }
-#pageStory div.embedQuiz h3 {
+#pageStory div.embed h3 {
 	background: #6cb6c4;
 	font-size: 21px;
 	margin: 0 auto;
 	color: #fff;
 	display: table;
-	border-radius: 0 0 1em 1em;
+	border-radius: 0 0 .4em .4em;
 	padding: 0 2em;
 	font-weight: 300;
 }
@@ -416,12 +403,6 @@ body, .ui-overlay-a, .ui-page-theme-a {
 	background: #6cb6c4;
 }
 
-#pageStory div.embedSpending, #pageStory div.embedGuessing {
-	background: #dceef1;
-	font-family: 'Montserrat', sans-serif;
-	font-size: 16px;
-	padding: 0 0 .5em 0;
-}
 #pageStory div.embedSpending .ui-slider, #pageStory div.embedGuessing .ui-slider {
 	padding-top: 0;
 	margin: 0;
@@ -484,25 +465,11 @@ body, .ui-overlay-a, .ui-page-theme-a {
 }
 
 #pageStory div.embedInfo {
-	background: #fff;
-	border: 1px solid #333;
-	font-size: 16px;
-	padding: 0;
-	margin: 1em;
 	position: relative;
 }
 #pageStory div.embedInfo.shrink {
 	height: 8em;
 	overflow-y: hidden;
-}
-#pageStory div.embedInfo h3 {
-	font-family: 'Montserrat', sans-serif;
-	margin: .2em;
-	background: #dceef1;
-	color: #000;
-	display: table;
-	border-radius: 0 0 1em 0;
-	padding: 0 2em 0 .2em;
 }
 #pageStory div.embedInfo .showMore {
 	position: absolute;
@@ -511,7 +478,7 @@ body, .ui-overlay-a, .ui-page-theme-a {
 	text-align: center;
 	width: 100%;
 	max-width: 41em;
-	background: rgba(243,243,243,.8);
+	background: #dceef1d0;
 	display: none;
 }
 #pageStory div.embedInfo.shrink .showMore {
