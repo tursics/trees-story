@@ -154,7 +154,7 @@
 #headerBox.big div {
 	display: block;
 }
-#headerBox .author {
+#headerBox .title {
 	display: block;
 	font-family: 'Montserrat', sans-serif;
 	position: absolute;
@@ -164,26 +164,22 @@
 	border-right: 1px solid #38aadd;
 	padding: 0 7px 0 0;
 }
-#headerBox.big .author {
+#headerBox.big .title {
 	border-right: 0;
-	padding: 0;
-}
-#headerBox .author a {
 	color: #fff;
 	text-decoration: none;
 	line-height: 1.6em;
 	padding: 0;
 	margin: 0;
-	padding: .5em 0;
 }
-#headerBox .author a img {
+#headerBox .title a img {
 	height: 25px;
 	vertical-align: middle;
 }
-#headerBox .author span {
+#headerBox .title span {
 	display: none;
 }
-#headerBox.big .author span {
+#headerBox.big .title span {
 	display: inline;
 }
 #headerBox .social {
@@ -462,6 +458,25 @@ body, .ui-overlay-a, .ui-page-theme-a {
 	display: inline-block;
 	margin: .5em;
 	color: black;
+}
+
+#author {
+	background: #6cb6c450;
+	border-top: 2px solid #6cb6c4;
+	display: table;
+	margin: 1em auto 0 auto;
+	padding: .5em 2em;
+}
+#author img {
+	float: left;
+	height: 2.6em;
+	padding: 0 1em 0 0;
+	vertical-align: middle;
+}
+#author, #author a {
+	color: #777;
+	font-weight: 500;
+	text-decoration: none;
 }
 
 #pageStory div.embedInfo {
