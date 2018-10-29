@@ -256,3 +256,39 @@ Der Quelltext steht unter der MIT-Lizenz, das eine Bild unter CC-0-Lizenz.
 **wfs:Title**
 
 ```Baumbestand Berlin - Straßenbäume - Sachdaten zur Karte```
+
+---
+
+3rd version of this site:
+
+## collect the data
+
+Go to the FIS-Broker, browse to the datasets and copy the WFS links
+- Anlagenbäume: https://fbinter.stadt-berlin.de/fb/wfs/data/senstadt/s_baumbestand_an
+- Straßenbäume: https://fbinter.stadt-berlin.de/fb/wfs/data/senstadt/s_baumbestand
+- Uferbäume: https://fbinter.stadt-berlin.de/fb/wfs/data/senstadt/s_uferbaeume (https://fbinter.stadt-berlin.de/fb?loginkey=alphaDataStart&alphaDataId=s_uferbaeume@senstadt)
+
+Import the WFS links in QGIS and export the datasets as TSV files (choose CSV with TAB separator)
+
+## data
+
+**Uferbäume**
+- description: Bäume am Gewässer
+- modified: 03.02.2017
+
+
+**Baumbestand Berlin - Anlagenbäume**
+- description: Sachdaten zum Baumbestand - Anlagenbäume - mit Angaben zur Baumart, Adresse, Pflanzjahr, Höhe etc.
+- more: https://fbinter.stadt-berlin.de/fb_daten/beschreibung/sachdaten/sach_baumbestand_anlagen.html
+- based on:  Meldung des Grünflächenbestandes durch die bezirklichen Straßen- und Grünflächenämter 
+- modified: 30.05.2018
+
+
+**Baumbestand Berlin - Straßenbäume**
+- description: Sachdaten zum Baumbestand - Straßenbäume - mit Angaben zur Baumart, Adresse, Pflanzjahr, Höhe etc.
+- more: https://fbinter.stadt-berlin.de/fb_daten/beschreibung/sachdaten/sach_baumbestand_strassen.html
+- based on: Meldung des Grünflächenbestandes durch die bezirklichen Straßen- und Grünflächenämter 
+- modified: 30.05.2018
+
+**license**
+- Nutzungsbedingungen: Für die Verwendung der Daten gelten folgende Nutzungsbestimmungen: http://www.stadtentwicklung.berlin.de/geoinformation/download/nutzIII.pdf - Der Quellenvermerk gemäß §2 lautet "Geoportal Berlin / [Titel des Datensatzes]".
