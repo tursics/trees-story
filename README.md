@@ -17,158 +17,156 @@ Es gibt einige Statistiken und interaktive Elemente in dem Artikel.
 ```
 $ npm install tsv
 $ node script/build-statistics.js 
+```
 
-loading...
-Data count:  331366
-Trees count: 331352
+- data #1 from 2016-03-01
 
-Districts:
-  Steglitz-Zehlendorf: 56989 trees (17.1%)
-  Pankow: 43597 trees (13.1%)
-  Reinickendorf: 43563 trees (13.1%)
-  Charlottenburg-Wilmersdorf: 43052 trees (12.9%)
-  Tempelhof-Schöneberg: 32997 trees (9.9%)
-  Spandau: 24670 trees (7.4%)
-  Lichtenberg: 23632 trees (7.1%)
-  Mitte: 21307 trees (6.4%)
-  Neukölln: 19244 trees (5.8%)
-  Marzahn-Hellersdorf: 11601 trees
-  Friedrichshain-Kreuzberg: 10264 trees
-  Treptow-Köpenick: 436 trees
+title              |street trees, 2016    |street treets, 2018   |
+-------------------|----------------------|----------------------|
+Data count         |331.366 trees         |434.156 trees
+Trees count        |331.352 trees         |434.156 trees
+**Districts**      ||
+Charlottenburg-W.  |43.052 trees (12.9%)  |42.889 trees (9.8%)
+Friedrichshain-K.  |10.264 trees          |16.260 trees
+Lichtenberg        |23.632 trees (7.1%)   |31.462 trees (7.2%)
+Marzahn-H.         |11.601 trees          |45.073 trees (10.3%)
+Mitte              |21.307 trees (6.4%)   |25.438 trees (5.8%)
+Neukölln           |19.244 trees (5.8%)   |20.672 trees          |
+Pankow             |43.597 trees (13.1%)  |42.881 trees (9.8%)   |
+Reinickendorf      |43.563 trees (13.1%)  |44.088 trees (10.1%)  |
+Spandau            |24.670 trees (7.4%)   |26.040 trees (5.9%)   |
+Steglitz-Z.        |56.989 trees (17.1%)  |60.697 trees (13.9%)  |
+Tempelhof-Sch.     |32.997 trees (9.9%)   |34.984 trees (8%)     |
+Treptow-K.         |436 trees             |43.537 trees (10%)    |
+**Type**           ||
+TILIA              |126.238 trees (38%)   |153.470 trees (35.3%)
+ACER               |59.902 trees (18%)    |87.044 trees (20%)
+QUERCUS            |31.028 trees (9.3%)   |38.518 trees (8.8%)
+PLATANUS           |22.012 trees (6.6%)   |24.964 trees (5.7%)
+AESCULUS           |17.449 trees (5.2%)   |20.928 trees
+BETULA             |10.787 trees          ]14.392 trees
+ROBINIA            |8.188 trees           |11.338 trees
+FRAXINUS           |7.682 trees           |11.772 trees
+SORBUS             |6.047 trees           |
+CORYLUS            |5.859 trees           |8.183 trees
+POPULUS            |                      |8.143 trees
+**Subtype**        ||
+TILIA CORDATA      |49.744 trees (15%)    |58.994 trees (13.5%)
+ACER PLATANOIDES   |38.279 trees (11.5%)  |51.082 trees (11.7%)
+PLATANUS ACERIFOLIA|21.928 trees (6.6%)   |24.797 trees (5.7%)
+QUERCUS ROBUR      |19.935 trees (6%)     |24.885 trees (5.7%)
+TILIA PLATYPHYLLOS |15.070 trees          |18.803 trees
+TILIA SPEC.        |14.703 trees          |15.711 trees
+AESCULUS HIPPOCASTANUM|13.612 trees       |16.291 trees
+TILIA INTERMEDIA   |12.045 trees          |14.663 trees
+BETULA PENDULA     |10.139 trees          |13.281 trees
+TILIA EUCHLORA     |9.686 trees
+Acer pseudoplatanus|                      |12.684 trees
+**Age in years**   |51: 14.816 trees      |33: 16.269 trees
+                   |36: 13.976 trees      |28: 16.130 trees
+                   |31: 13.494 trees      |53: 16.111 trees
+                   |46: 13.029 trees      |38: 15.448 trees
+                   |66: 11.216 trees      |48: 13.538 trees
+                   |average: 41.8 years   |average: 41.3 years
+                   |                      |median: 33 years
+**Oldest**         ||
+2018               |                      |422 trees
+2017               |                      |1983 trees
+2016               |27 trees              |2296 trees
+2015               |1275 trees            |2432 trees
+2014               |1762 trees            |2927 trees
+2013               |1768 trees            |2940 trees
+2012               |2014 trees            |3085 trees
+2011               |2267 trees            |3418 trees
+2010               |1752 trees            |3746 trees
+2009               |2079 trees            |2933 trees
+2008               |2349 trees            |
+2007               |1933 trees            |
+                   |1745: 1 trees         |1745: 1 trees
+                   |1740: 1 trees         |1739: 1 trees
+                   |1739: 1 trees         |1720: 1 trees
+                   |1720: 1 trees         |1700: 3 trees
+                   |1704: 1 trees         |1655: 1 trees
+                   |1700: 3 trees         |1498: 1 trees
+                   |1655: 1 trees         |1295: 1 trees
+                   |1575: 1 trees         |1193: 1 trees
+                   |1533: 1 trees         |1085: 1 trees
+                   |1316: 1 trees         |1: 3 trees
+**Height (in cm)** |12.600.00: 1 trees    |6.700.00: 1 trees
+                   |5.800.00: 1 trees     |5.800.00: 1 trees
+                   |2.275.00: 1 trees     |2.500.00: 1 trees
+                   |1.900.00: 1 trees     |2.200.00: 1 trees
+                   |1.800.00: 2 trees     |2.013.00: 3 trees
+                   |1.700.00: 3 trees     |1.998.00: 2 trees
+                   |1.600.00: 11 trees    |1.994.00: 2 trees
+                   |1.500.00: 4 trees     |1.992.00: 1 trees
+                   |1.400.00: 1 trees     |1.991.00: 1 trees
+                   |1.300.00: 1 trees     |1.988.00: 1 trees
+                   |1.214.00: 1 trees     |1.987.00: 13 trees
+                   |1.200.00: 4 trees     |1.986.00: 3 trees
+                   |1.100.00: 3 trees     |1.985.00: 6 trees
+                   |1.000.00: 4 trees     |1.984.00: 5 trees
+                   |900.00: 1 trees       |1.980.00: 5 trees
+                   |800.00: 4 trees       |1.979.00: 6 trees
+                   |700.00: 4 trees       |1.978.00: 7 trees
+                   |600.00: 4 trees       |1.975.00: 7 trees
+                   |500.00: 4 trees       |1.970.00: 8 trees
+                   |400.00: 2 trees       |1.965.00: 7 trees
+                   |300.00: 1 trees       |1.960.00: 9 trees
+                   |:                     |:
+                   |20: 1 trees           |16: 1 trees
+                   |16: 2 trees           |15: 3 trees
+                   |15: 2 trees           |14: 1 trees
+                   |14: 1 trees           |12: 1 trees
+                   |12: 1 trees           |9: 1 trees
+                   |10: 5 trees           |8: 1 trees
+                   |9: 1 trees            |4: 1 trees
+                   |8: 1 trees            |0: 147410 trees
+                   |4: 1 trees            |-10.00: 7 trees
+                   |0: 1 trees            |-15.00: 3 trees
+                   |average: 671 cm       |average: 808 cm
+                   |                      |median: 700 cm
+**Height (in cm)** |7.00: 44561 trees (13.4%)|7.00: 62658 trees (14.4%)
+                   |                      |0: 147410 trees (33.9%)
+**Trunk circumference (in cm)** ||
+                   |325.00: 1 trees       |212.01: 1 trees
+                   |305.00: 1 trees       |138.00: 1 trees
+                   |205.00: 2 trees       |110.00: 1 trees
+                   |203.00: 1 trees       |101.00: 1 trees
+                   |138.00: 1 trees       |94.00: 1 trees
+                   |115.00: 1 trees       |92.79: 1 trees
+                   |110.00: 1 trees       |92.08: 1 trees
+                   |105.00: 3 trees       |91.08: 1 trees
+                   |101.00: 1 trees       |88.92: 1 trees
+                   |95.00: 1 trees        |63.27: 1 trees
+                   |94.00: 1 trees        |61.89: 1 trees
+                   |92.05: 1 trees        |58.00: 1 trees
+                   |87.00: 1 trees        |57.40: 1 trees
+                   |85.00: 1 trees        |49.73: 1 trees
+                   |76.84: 1 trees        |47.42: 1 trees
+                   |59.91: 1 trees        |44.67: 1 trees
+                   |58.00: 1 trees        |34.97: 1 trees
+                   |57.58: 1 trees        |31.40: 1 trees
+                   |50.83: 1 trees        |31.00: 1 trees
+                   |47.57: 1 trees        |25.50: 1 trees
+                   |:                     |:
+                   |9: 19 trees           |10: 34 trees
+                   |8: 6 trees            |9: 29 trees
+                   |7: 5 trees            |8: 19 trees
+                   |6: 7 trees            |7: 5 trees
+                   |5: 4 trees            |6: 16 trees
+                   |4: 3 trees            |5: 5 trees
+                   |3: 5 trees            |4: 4 trees
+                   |2: 2 trees            |3: 9 trees
+                   |1: 4 trees            |1: 4 trees
+                   |0: 99 trees           |0: 89 trees
+                   |average: 106 cm       |average: 101 cm
+                   |                      |median: 90 cm
+**Trunk circumference (in cm)**||
+                   |60: 6292 trees        |110: 9831 trees
 
-Type:
-  TILIA: 126238 trees (38%)
-  ACER: 59902 trees (18%)
-  QUERCUS: 31028 trees (9.3%)
-  PLATANUS: 22012 trees (6.6%)
-  AESCULUS: 17449 trees (5.2%)
-  BETULA: 10787 trees
-  ROBINIA: 8188 trees
-  FRAXINUS: 7682 trees
-  SORBUS: 6047 trees
-  CORYLUS: 5859 trees
-  :
-  SEQUOIADENDRON: 2 trees
-  TAMARIX: 1 trees
-  CORNUS: 1 trees
-  EUONYMUS: 1 trees
-  CARAGANA: 1 trees
+```
 
-Subtype:
-  TILIA CORDATA: 49744 trees (15%)
-  ACER PLATANOIDES: 38279 trees (11.5%)
-  PLATANUS ACERIFOLIA: 21928 trees (6.6%)
-  QUERCUS ROBUR: 19935 trees (6%)
-  TILIA PLATYPHYLLOS: 15070 trees
-  TILIA SPEC.: 14703 trees
-  AESCULUS HIPPOCASTANUM: 13612 trees
-  TILIA INTERMEDIA: 12045 trees
-  BETULA PENDULA: 10139 trees
-  TILIA EUCHLORA: 9686 trees
-
-Age in years:
-  51: 14816 trees
-  36: 13976 trees
-  31: 13494 trees
-  46: 13029 trees
-  66: 11216 trees
-  best: 41.8 years
-
-Oldest:
-  2016: 27 trees
-  2015: 1275 trees
-  2014: 1762 trees
-  2013: 1768 trees
-  2012: 2014 trees
-  2011: 2267 trees
-  2010: 1752 trees
-  2009: 2079 trees
-  2008: 2349 trees
-  2007: 1933 trees
-  :
-  1745: 1 trees
-  1740: 1 trees
-  1739: 1 trees
-  1720: 1 trees
-  1704: 1 trees
-  1700: 3 trees
-  1655: 1 trees
-  1575: 1 trees
-  1533: 1 trees
-  1316: 1 trees
-
-Height (in cm):
-  1260000: 1 trees
-  580000: 1 trees
-  227500: 1 trees
-  190000: 1 trees
-  180000: 2 trees
-  170000: 3 trees
-  160000: 11 trees
-  150000: 4 trees
-  140000: 1 trees
-  130000: 1 trees
-  121400: 1 trees
-  120000: 4 trees
-  110000: 3 trees
-  100000: 4 trees
-  90000: 1 trees
-  80000: 4 trees
-  70000: 4 trees
-  60000: 4 trees
-  50000: 4 trees
-  40000: 2 trees
-  30000: 1 trees
-  :
-  20: 1 trees
-  16: 2 trees
-  15: 2 trees
-  14: 1 trees
-  12: 1 trees
-  10: 5 trees
-  9: 1 trees
-  8: 1 trees
-  4: 1 trees
-  0: 1 trees
-  best: 671 cm
-Height (in cm):
-  700: 44561 trees (13.4%)
-
-Trunk circumference (in cm):
-  32500: 1 trees
-  30500: 1 trees
-  20500: 2 trees
-  20300: 1 trees
-  13800: 1 trees
-  11500: 1 trees
-  11000: 1 trees
-  10500: 3 trees
-  10100: 1 trees
-  9500: 1 trees
-  9400: 1 trees
-  9205: 1 trees
-  8700: 1 trees
-  8500: 1 trees
-  7684: 1 trees
-  5991: 1 trees
-  5800: 1 trees
-  5758: 1 trees
-  5083: 1 trees
-  4757: 1 trees
-  :
-  9: 19 trees
-  8: 6 trees
-  7: 5 trees
-  6: 7 trees
-  5: 4 trees
-  4: 3 trees
-  3: 5 trees
-  2: 2 trees
-  1: 4 trees
-  0: 99 trees
-  best: 106 cm
-Trunk circumference (in cm):
-  60: 6292 trees
 
 Tree crown (in cm):
   50000: 1 trees

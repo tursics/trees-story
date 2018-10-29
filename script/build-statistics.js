@@ -8,7 +8,8 @@ function loadTrees() {
 
 	var fs = require('fs'),
 		TSV = require('tsv').TSV,
-		filepath = '../data/re_strassenbaeume.tsv',
+//		filepath = '../data/re_strassenbaeume.tsv',
+		filepath = '../data/strassenbaeume.tsv',
 		buffer = fs.readFileSync(filepath, 'utf-8');
 
 	return TSV.parse(buffer);
@@ -22,32 +23,11 @@ function garbageCollection(trees) {
 	var i;
 
 	for (i = 0; i < trees.length; ++i) {
-		if ('Land Berlin' !== trees[i].Eigentuemer) {
-//			console.log('Error: ' + JSON.stringify(trees[i], null, 4));
-			trees.splice(i, 1);
-			--i;
-			continue;
-		}
 		if ('null' === trees[i].BEZIRK) {
 //			console.log('Error: ' + JSON.stringify(trees[i], null, 4));
 			trees.splice(i, 1);
 			--i;
 			continue;
-		}
-	}
-}
-
-//-----------------------------------------------------------------------
-
-function analyseOwnership(trees) {
-	'use strict';
-
-	var i;
-
-	// nothing to do. It's allways 'Land Berlin'
-	for (i = 0; i < trees.length; ++i) {
-		if ('Land Berlin' !== trees[i].Eigentuemer) {
-			console.log('Error: ' + JSON.stringify(trees[i], null, 4));
 		}
 	}
 }
@@ -85,7 +65,11 @@ function logData(trees, data, title, top, bottom) {
 
 	console.log('  :');
 	for (i = sortable.length - bottom; i < sortable.length; ++i) {
-		console.log('  ' + sortable[i].title + ': ' + sortable[i].count + ' trees');
+		if ('undefined' === typeof sortable[i]) {
+			console.log('  ???: ??? trees');
+		} else {
+			console.log('  ' + sortable[i].title + ': ' + sortable[i].count + ' trees');
+		}
 	}
 }
 
@@ -122,7 +106,11 @@ function logDataKey(trees, data, title, top, bottom) {
 
 	console.log('  :');
 	for (i = sortable.length - bottom; i < sortable.length; ++i) {
-		console.log('  ' + sortable[i].title + ': ' + sortable[i].count + ' trees');
+		if ('undefined' === typeof sortable[i]) {
+			console.log('  ???: ??? trees');
+		} else {
+			console.log('  ' + sortable[i].title + ': ' + sortable[i].count + ' trees');
+		}
 	}
 }
 
@@ -155,7 +143,8 @@ function analyseType(trees) {
 	var i, key, count = [], data = {}, item;
 
 	for (i = 0; i < trees.length; ++i) {
-		item = trees[i].Gattung;
+//		item = trees[i].Gattung;
+		item = trees[i].GATTUNG_BOTANISCH;
 
 		if (-1 === count.indexOf(item)) {
 			count.push(item);
@@ -179,7 +168,8 @@ function analyseSubType(trees) {
 	// "Art_Bot": "TILIA CORDATA"
 
 	for (i = 0; i < trees.length; ++i) {
-		item = trees[i].Art_Bot;
+//		item = trees[i].Art_Bot;
+		item = trees[i].ART_BOTANISCH;
 
 		if (-1 === count.indexOf(item)) {
 			count.push(item);
@@ -203,7 +193,8 @@ function analyseAge(trees) {
 	// "Standalter": 26
 
 	for (i = 0; i < trees.length; ++i) {
-		item = parseInt(trees[i].Standalter, 10);
+//		item = parseInt(trees[i].Standalter, 10);
+		item = parseInt(trees[i].STANDALTER, 10);
 		if (isNaN(item)) {
 			continue;
 		}
@@ -217,13 +208,19 @@ function analyseAge(trees) {
 		}
 	}
 
+	trees.sort(function (a, b) {
+		return parseInt(a.STANDALTER, 10) - parseInt(b.STANDALTER, 10);
+	});
+
 	logData(trees, data, 'Age in years:', 5, 0);
-	console.log('  best: ' + (parseInt(sum / trees.length * 10, 10) / 10) + ' years');
+	console.log('  average: ' + (parseInt(sum / trees.length * 10, 10) / 10) + ' years');
+	console.log('  median: ' + parseInt(trees[trees.length / 2].STANDALTER, 10) + ' years');
 
 	count = [];
 	data = {};
 	for (i = 0; i < trees.length; ++i) {
-		item = parseInt(trees[i].Pflanzjahr, 10);
+//		item = parseInt(trees[i].Pflanzjahr, 10);
+		item = parseInt(trees[i].PFLANZJAHR, 10);
 		if (isNaN(item)) {
 			continue;
 		}
@@ -247,7 +244,8 @@ function analyseHeight(trees) {
 	var i, key, count = [], data = {}, item, sum = 0;
 
 	for (i = 0; i < trees.length; ++i) {
-		item = parseInt(trees[i].BaumHoehe * 100, 10);
+//		item = parseInt(trees[i].BaumHoehe * 100, 10);
+		item = parseInt(trees[i].BAUMHOEHE_AKT * 100, 10);
 		if (isNaN(item)) {
 			continue;
 		}
@@ -261,9 +259,14 @@ function analyseHeight(trees) {
 		}
 	}
 
+	trees.sort(function (a, b) {
+		return parseInt(a.BAUMHOEHE_AKT * 100, 10) - parseInt(b.BAUMHOEHE_AKT * 100, 10);
+	});
+
 	logDataKey(trees, data, 'Height (in cm):', 21, 10);
-	console.log('  best: ' + (parseInt(sum / trees.length, 10)) + ' cm');
-	logData(trees, data, 'Height (in cm):', 1, 0);
+	console.log('  average: ' + (parseInt(sum / trees.length, 10)) + ' cm');
+	console.log('  median: ' + parseInt(trees[trees.length / 2].BAUMHOEHE_AKT * 100, 10) + ' cm');
+	logData(trees, data, 'Height (in cm):', 2, 0);
 }
 
 //-----------------------------------------------------------------------
@@ -274,7 +277,8 @@ function analyseTrunk(trees) {
 	var i, key, count = [], data = {}, item, sum = 0;
 
 	for (i = 0; i < trees.length; ++i) {
-		item = parseInt(trees[i].Stammumfg, 10);
+//		item = parseInt(trees[i].Stammumfg, 10);
+		item = parseInt(trees[i].STAMMUMFANG_AKT, 10);
 		if (isNaN(item)) {
 			continue;
 		}
@@ -288,8 +292,13 @@ function analyseTrunk(trees) {
 		}
 	}
 
+	trees.sort(function (a, b) {
+		return parseInt(a.STAMMUMFANG_AKT, 10) - parseInt(b.STAMMUMFANG_AKT, 10);
+	});
+
 	logDataKey(trees, data, 'Trunk circumference (in cm):', 20, 10);
-	console.log('  best: ' + (parseInt(sum / trees.length, 10)) + ' cm');
+	console.log('  average: ' + (parseInt(sum / trees.length, 10)) + ' cm');
+	console.log('  median: ' + parseInt(trees[trees.length / 2].STAMMUMFANG_AKT, 10) + ' cm');
 	logData(trees, data, 'Trunk circumference (in cm):', 1, 0);
 }
 
@@ -301,7 +310,8 @@ function analyseCrown(trees) {
 	var i, key, count = [], data = {}, item, sum = 0;
 
 	for (i = 0; i < trees.length; ++i) {
-		item = parseInt(trees[i].KroneDurch * 100, 10);
+//		item = parseInt(trees[i].KroneDurch * 100, 10);
+		item = parseInt(trees[i].KRONENDURCHMESSER_AKT * 100, 10);
 		if (isNaN(item)) {
 			continue;
 		}
@@ -316,7 +326,7 @@ function analyseCrown(trees) {
 	}
 
 	logDataKey(trees, data, 'Tree crown (in cm):', 20, 10);
-	console.log('  best: ' + (parseInt(sum / trees.length, 10)) + ' cm');
+	console.log('  average: ' + (parseInt(sum / trees.length, 10)) + ' cm');
 	logData(trees, data, 'Tree crown (in cm):', 1, 0);
 }
 
@@ -331,19 +341,24 @@ function analyseIdealTree(trees) {
 /*		if ('Steglitz-Zehlendorf' !== trees[i].BEZIRK) {
 			continue;
 		}*/
-		if ('TILIA CORDATA' !== trees[i].Art_Bot) {
+//		if ('TILIA CORDATA' !== trees[i].Art_Bot) {
+		if ('TILIA CORDATA' !== trees[i].ART_BOTANISCH) {
 			continue;
 		}
-		if ((parseInt(trees[i].Standalter, 10) < 41) || (42 < parseInt(trees[i].Standalter, 10))) {
+//		if ((parseInt(trees[i].Standalter, 10) < 41) || (42 < parseInt(trees[i].Standalter, 10))) {
+		if ((parseInt(trees[i].STANDALTER, 10) < 41) || (42 < parseInt(trees[i].STANDALTER, 10))) {
 			continue;
 		}
-		if (7 !== parseInt(trees[i].BaumHoehe, 10)) {
+//		if (7 !== parseInt(trees[i].BaumHoehe, 10)) {
+		if (7 !== parseInt(trees[i].BAUMHOEHE_AKT, 10)) {
 			continue;
 		}
-		if (60 !== parseInt(trees[i].Stammumfg, 10)) {
+//		if (60 !== parseInt(trees[i].Stammumfg, 10)) {
+		if (60 !== parseInt(trees[i].STAMMUMFANG_AKT, 10)) {
 			continue;
 		}
-		if (6 !== parseInt(trees[i].KroneDurch, 10)) {
+//		if (6 !== parseInt(trees[i].KroneDurch, 10)) {
+		if (6 !== parseInt(trees[i].KRONENDURCHMESSER_AKT, 10)) {
 			continue;
 		}
 		item = JSON.stringify(trees[i], null, 4);
@@ -373,7 +388,6 @@ try {
 	garbageCollection(trees);
 	console.log('Trees count: ' + trees.length);
 
-	analyseOwnership(trees);
 	analyseDistricts(trees);
 	analyseType(trees);
 	analyseSubType(trees);
