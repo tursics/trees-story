@@ -44,7 +44,7 @@ ACER               |59.902 trees (18%)    |87.044 trees (20%)
 QUERCUS            |31.028 trees (9.3%)   |38.518 trees (8.8%)
 PLATANUS           |22.012 trees (6.6%)   |24.964 trees (5.7%)
 AESCULUS           |17.449 trees (5.2%)   |20.928 trees
-BETULA             |10.787 trees          ]14.392 trees
+BETULA             |10.787 trees          |14.392 trees
 ROBINIA            |8.188 trees           |11.338 trees
 FRAXINUS           |7.682 trees           |11.772 trees
 SORBUS             |6.047 trees           |
@@ -68,7 +68,7 @@ Acer pseudoplatanus|                      |12.684 trees
                    |46: 13.029 trees      |38: 15.448 trees
                    |66: 11.216 trees      |48: 13.538 trees
                    |average: 41.8 years   |average: 41.3 years
-                   |                      |median: 33 years
+                   |                      |median: 37 years
 **Oldest**         ||
 2018               |                      |422 trees
 2017               |                      |1983 trees
@@ -121,13 +121,13 @@ Acer pseudoplatanus|                      |12.684 trees
                    |12: 1 trees           |9: 1 trees
                    |10: 5 trees           |8: 1 trees
                    |9: 1 trees            |4: 1 trees
-                   |8: 1 trees            |0: 147410 trees
+                   |8: 1 trees            |0: 147.410 trees
                    |4: 1 trees            |-10.00: 7 trees
                    |0: 1 trees            |-15.00: 3 trees
                    |average: 671 cm       |average: 808 cm
-                   |                      |median: 700 cm
-**Height (in cm)** |7.00: 44561 trees (13.4%)|7.00: 62658 trees (14.4%)
-                   |                      |0: 147410 trees (33.9%)
+                   |                      |median: 1100 cm
+**Height (in cm)** |7.00: 44.561 trees (13.4%)|7.00: 62.658 trees (14.4%)
+                   |                      |0: 147.410 trees (33.9%)
 **Trunk circumference (in cm)** ||
                    |325.00: 1 trees       |212.01: 1 trees
                    |305.00: 1 trees       |138.00: 1 trees
@@ -163,49 +163,49 @@ Acer pseudoplatanus|                      |12.684 trees
                    |average: 106 cm       |average: 101 cm
                    |                      |median: 90 cm
 **Trunk circumference (in cm)**||
-                   |60: 6292 trees        |110: 9831 trees
+                   |60: 6.292 trees       |110: 9.831 trees
+**Tree crown (in cm)**||
+                   |50.000: 1 trees       |50.000: 2 trees
+                   |40.500: 1 trees       |40.500: 1 trees
+                   |40.000: 3 trees       |40.000: 4 trees
+                   |30.000: 2 trees       |30.000: 1 trees
+                   |20.000: 1 trees       |15.000: 1 trees
+                   |14.500: 1 trees       |14.500: 1 trees
+                   |10.000: 4 trees       |11.100: 1 trees
+                   |9.000: 1 trees        |11.000: 2 trees
+                   |8.880: 1 trees        |10.500: 1 trees
+                   |8.800: 2 trees        |10.000: 4 trees
+                   |8.000: 2 trees        |9.000: 1 trees
+                   |7.800: 1 trees        |8.880: 1 trees
+                   |7.300: 1 trees        |8.800: 2 trees
+                   |6.800: 1 trees        |8.400: 1 trees
+                   |6.600: 1 trees        |8.300: 1 trees
+                   |6.500: 1 trees        |8.000: 4 trees
+                   |6.400: 1 trees        |7.800: 1 trees
+                   |5.900: 1 trees        |7.700: 1 trees
+                   |5.550: 1 trees        |7.600: 1 trees
+                   |5.500: 1 trees        |7.300: 1 trees
+                   |:                     |:
+                   |27: 1 trees           |30: 2 trees
+                   |25: 2 trees           |27: 1 trees
+                   |20: 1 trees           |25: 2 trees
+                   |15: 1 trees           |15: 1 trees
+                   |12: 1 trees           |12: 1 trees
+                   |10: 4 trees           |10: 4 trees
+                   |8: 1 trees            |8: 1 trees
+                   |5: 2 trees            |5: 2 trees
+                   |1: 1 trees            |1: 1 trees
+                   |0: 1 trees            |0: 219.433 trees
+                   |average: 299 cm       |average: 306 cm
+                   |                      |median: 550 cm
+**Tree crown (in cm)**||
+                   |600: 15.667 trees     |600: 22.589 trees (5.2%)
+                   |                      |0: 219.433 trees (50.5%)
+
+Ideal street tree (2016, ignore BEZIRK):
 
 ```
-
-
-Tree crown (in cm):
-  50000: 1 trees
-  40500: 1 trees
-  40000: 3 trees
-  30000: 2 trees
-  20000: 1 trees
-  14500: 1 trees
-  10000: 4 trees
-  9000: 1 trees
-  8880: 1 trees
-  8800: 2 trees
-  8000: 2 trees
-  7800: 1 trees
-  7300: 1 trees
-  6800: 1 trees
-  6600: 1 trees
-  6500: 1 trees
-  6400: 1 trees
-  5900: 1 trees
-  5550: 1 trees
-  5500: 1 trees
-  :
-  27: 1 trees
-  25: 2 trees
-  20: 1 trees
-  15: 1 trees
-  12: 1 trees
-  10: 4 trees
-  8: 1 trees
-  5: 2 trees
-  1: 1 trees
-  0: 1 trees
-  best: 299 cm
-Tree crown (in cm):
-  600: 15667 trees
-
-Ideal trees:
-  {
+{
     "gml_id": "featuretype.F3__938163",
     "spatial_name": "F3__938163",
     "spatial_alias": "F3__938163",
@@ -230,7 +230,27 @@ Ideal trees:
     "lon": "13.418758521290073",
     "lat": "52.52529966357725"
 }
-1 tree
+```
+
+Ideal street treet (2018, ignore BEZIRK):
+```
+{
+    "STANDORT_NR": "A/48",
+    "KENNZEICHEN": 100994,
+    "NAME_NUMBER": "Fürstenwalder Damm /Salvador-Allende-Straße Köp ",
+    "ART_DEUTSCH": "Winter-Linde",
+    "ART_BOTANISCH": "Tilia cordata",
+    "GATTUNG_BOTANISCH": "TILIA",
+    "STRASSENNAME": "Fürstenwalder Damm",
+    "HAUSNR": "",
+    "ZUSATZ": "",
+    "PFLANZJAHR": 1981,
+    "STANDALTER": 37,
+    "KRONENDURCHMESSER_AKT": 5,
+    "STAMMUMFANG_AKT": 99,
+    "BAUMHOEHE_AKT": 11,
+    "BEZIRK": "Treptow-Köpenick"
+}
 ```
 
 # Lizenzen

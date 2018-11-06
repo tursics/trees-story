@@ -187,7 +187,7 @@ function analyseSubType(trees) {
 function analyseAge(trees) {
 	'use strict';
 
-	var i, key, count = [], data = {}, item, sum = 0;
+	var i, key, count = [], nonZero = [], data = {}, item, sum = 0;
 
 	// "Pflanzjahr": 1990
 	// "Standalter": 26
@@ -200,6 +200,10 @@ function analyseAge(trees) {
 		}
 		sum += item;
 
+		if (item && (item > 0)) {
+			nonZero.push(item);
+		}
+
 		if (-1 === count.indexOf(item)) {
 			count.push(item);
 			data[item] = 1;
@@ -208,13 +212,13 @@ function analyseAge(trees) {
 		}
 	}
 
-	trees.sort(function (a, b) {
-		return parseInt(a.STANDALTER, 10) - parseInt(b.STANDALTER, 10);
+	nonZero.sort(function (a, b) {
+		return a - b;
 	});
 
 	logData(trees, data, 'Age in years:', 5, 0);
 	console.log('  average: ' + (parseInt(sum / trees.length * 10, 10) / 10) + ' years');
-	console.log('  median: ' + parseInt(trees[trees.length / 2].STANDALTER, 10) + ' years');
+	console.log('  median: ' + nonZero[Math.trunc(nonZero.length / 2)] + ' years');
 
 	count = [];
 	data = {};
@@ -241,7 +245,7 @@ function analyseAge(trees) {
 function analyseHeight(trees) {
 	'use strict';
 
-	var i, key, count = [], data = {}, item, sum = 0;
+	var i, key, count = [], nonZero = [], data = {}, item, sum = 0;
 
 	for (i = 0; i < trees.length; ++i) {
 //		item = parseInt(trees[i].BaumHoehe * 100, 10);
@@ -251,6 +255,10 @@ function analyseHeight(trees) {
 		}
 		sum += item;
 
+		if (item && (item > 0)) {
+			nonZero.push(item);
+		}
+
 		if (-1 === count.indexOf(item)) {
 			count.push(item);
 			data[item] = 1;
@@ -259,13 +267,13 @@ function analyseHeight(trees) {
 		}
 	}
 
-	trees.sort(function (a, b) {
-		return parseInt(a.BAUMHOEHE_AKT * 100, 10) - parseInt(b.BAUMHOEHE_AKT * 100, 10);
+	nonZero.sort(function (a, b) {
+		return a - b;
 	});
 
 	logDataKey(trees, data, 'Height (in cm):', 21, 10);
 	console.log('  average: ' + (parseInt(sum / trees.length, 10)) + ' cm');
-	console.log('  median: ' + parseInt(trees[trees.length / 2].BAUMHOEHE_AKT * 100, 10) + ' cm');
+	console.log('  median: ' + nonZero[Math.trunc(nonZero.length / 2)] + ' cm');
 	logData(trees, data, 'Height (in cm):', 2, 0);
 }
 
@@ -274,7 +282,7 @@ function analyseHeight(trees) {
 function analyseTrunk(trees) {
 	'use strict';
 
-	var i, key, count = [], data = {}, item, sum = 0;
+	var i, key, count = [], nonZero = [], data = {}, item, sum = 0;
 
 	for (i = 0; i < trees.length; ++i) {
 //		item = parseInt(trees[i].Stammumfg, 10);
@@ -284,6 +292,10 @@ function analyseTrunk(trees) {
 		}
 		sum += item;
 
+		if (item && (item > 0)) {
+			nonZero.push(item);
+		}
+
 		if (-1 === count.indexOf(item)) {
 			count.push(item);
 			data[item] = 1;
@@ -292,13 +304,13 @@ function analyseTrunk(trees) {
 		}
 	}
 
-	trees.sort(function (a, b) {
-		return parseInt(a.STAMMUMFANG_AKT, 10) - parseInt(b.STAMMUMFANG_AKT, 10);
+	nonZero.sort(function (a, b) {
+		return a - b;
 	});
 
 	logDataKey(trees, data, 'Trunk circumference (in cm):', 20, 10);
 	console.log('  average: ' + (parseInt(sum / trees.length, 10)) + ' cm');
-	console.log('  median: ' + parseInt(trees[trees.length / 2].STAMMUMFANG_AKT, 10) + ' cm');
+	console.log('  median: ' + nonZero[Math.trunc(nonZero.length / 2)] + ' cm');
 	logData(trees, data, 'Trunk circumference (in cm):', 1, 0);
 }
 
@@ -307,7 +319,7 @@ function analyseTrunk(trees) {
 function analyseCrown(trees) {
 	'use strict';
 
-	var i, key, count = [], data = {}, item, sum = 0;
+	var i, key, count = [], nonZero = [], data = {}, item, sum = 0;
 
 	for (i = 0; i < trees.length; ++i) {
 //		item = parseInt(trees[i].KroneDurch * 100, 10);
@@ -317,6 +329,10 @@ function analyseCrown(trees) {
 		}
 		sum += item;
 
+		if (item && (item > 0)) {
+			nonZero.push(item);
+		}
+
 		if (-1 === count.indexOf(item)) {
 			count.push(item);
 			data[item] = 1;
@@ -325,9 +341,14 @@ function analyseCrown(trees) {
 		}
 	}
 
+	nonZero.sort(function (a, b) {
+		return a - b;
+	});
+
 	logDataKey(trees, data, 'Tree crown (in cm):', 20, 10);
 	console.log('  average: ' + (parseInt(sum / trees.length, 10)) + ' cm');
-	logData(trees, data, 'Tree crown (in cm):', 1, 0);
+	console.log('  median: ' + nonZero[Math.trunc(nonZero.length / 2)] + ' cm');
+	logData(trees, data, 'Tree crown (in cm):', 2, 0);
 }
 
 //-----------------------------------------------------------------------
@@ -338,27 +359,27 @@ function analyseIdealTree(trees) {
 	var i, key, count = [], data = {}, item;
 
 	for (i = 0; i < trees.length; ++i) {
-/*		if ('Steglitz-Zehlendorf' !== trees[i].BEZIRK) {
-			continue;
-		}*/
+		if ('Steglitz-Zehlendorf' !== trees[i].BEZIRK) {
+//			continue;
+		}
 //		if ('TILIA CORDATA' !== trees[i].Art_Bot) {
-		if ('TILIA CORDATA' !== trees[i].ART_BOTANISCH) {
+		if ('Tilia cordata' !== trees[i].ART_BOTANISCH) {
 			continue;
 		}
 //		if ((parseInt(trees[i].Standalter, 10) < 41) || (42 < parseInt(trees[i].Standalter, 10))) {
-		if ((parseInt(trees[i].STANDALTER, 10) < 41) || (42 < parseInt(trees[i].STANDALTER, 10))) {
+		if (37 !== parseInt(trees[i].STANDALTER, 10)) {
 			continue;
 		}
 //		if (7 !== parseInt(trees[i].BaumHoehe, 10)) {
-		if (7 !== parseInt(trees[i].BAUMHOEHE_AKT, 10)) {
+		if (11 !== parseInt(trees[i].BAUMHOEHE_AKT, 10)) {
 			continue;
 		}
 //		if (60 !== parseInt(trees[i].Stammumfg, 10)) {
-		if (60 !== parseInt(trees[i].STAMMUMFANG_AKT, 10)) {
+		if ((parseInt(trees[i].STAMMUMFANG_AKT, 10) < 80) || (100 < parseInt(trees[i].STAMMUMFANG_AKT, 10))) {
 			continue;
 		}
 //		if (6 !== parseInt(trees[i].KroneDurch, 10)) {
-		if (6 !== parseInt(trees[i].KRONENDURCHMESSER_AKT, 10)) {
+		if ((parseInt(trees[i].KRONENDURCHMESSER_AKT, 10) < 5) || (6 < parseInt(trees[i].KRONENDURCHMESSER_AKT, 10))) {
 			continue;
 		}
 		item = JSON.stringify(trees[i], null, 4);
@@ -371,6 +392,8 @@ function analyseIdealTree(trees) {
 		}
 	}
 
+//	console.log('count.length');
+//	console.log(count.length);
 	logData(trees, data, 'Ideal trees:', 20, 0);
 }
 
