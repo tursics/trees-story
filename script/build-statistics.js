@@ -9,7 +9,8 @@ function loadTrees() {
 	var fs = require('fs'),
 		TSV = require('tsv').TSV,
 //		filepath = '../data/re_strassenbaeume.tsv',
-		filepath = '../data/strassenbaeume.tsv',
+//		filepath = '../data/strassenbaeume.tsv',
+		filepath = '../data/anlagenbaeume.tsv',
 		buffer = fs.readFileSync(filepath, 'utf-8');
 
 	return TSV.parse(buffer);
@@ -359,27 +360,34 @@ function analyseIdealTree(trees) {
 	var i, key, count = [], data = {}, item;
 
 	for (i = 0; i < trees.length; ++i) {
-		if ('Steglitz-Zehlendorf' !== trees[i].BEZIRK) {
+//		if ('Steglitz-Zehlendorf' !== trees[i].BEZIRK) {
+//		if ('Steglitz-Zehlendorf' !== trees[i].BEZIRK) {
+		if ('Pankow' !== trees[i].BEZIRK) {
 //			continue;
 		}
 //		if ('TILIA CORDATA' !== trees[i].Art_Bot) {
-		if ('Tilia cordata' !== trees[i].ART_BOTANISCH) {
+//		if ('Tilia cordata' !== trees[i].ART_BOTANISCH) {
+		if ('Acer platanoides' !== trees[i].ART_BOTANISCH) {
 			continue;
 		}
 //		if ((parseInt(trees[i].Standalter, 10) < 41) || (42 < parseInt(trees[i].Standalter, 10))) {
-		if (37 !== parseInt(trees[i].STANDALTER, 10)) {
+//		if (37 !== parseInt(trees[i].STANDALTER, 10)) {
+		if (39 !== parseInt(trees[i].STANDALTER, 10)) {
 			continue;
 		}
 //		if (7 !== parseInt(trees[i].BaumHoehe, 10)) {
-		if (11 !== parseInt(trees[i].BAUMHOEHE_AKT, 10)) {
+//		if (11 !== parseInt(trees[i].BAUMHOEHE_AKT, 10)) {
+		if (13 !== parseInt(trees[i].BAUMHOEHE_AKT, 10)) {
 			continue;
 		}
 //		if (60 !== parseInt(trees[i].Stammumfg, 10)) {
-		if ((parseInt(trees[i].STAMMUMFANG_AKT, 10) < 80) || (100 < parseInt(trees[i].STAMMUMFANG_AKT, 10))) {
+//		if ((parseInt(trees[i].STAMMUMFANG_AKT, 10) < 80) || (100 < parseInt(trees[i].STAMMUMFANG_AKT, 10))) {
+		if ((parseInt(trees[i].STAMMUMFANG_AKT, 10) < 90) || (110 < parseInt(trees[i].STAMMUMFANG_AKT, 10))) {
 			continue;
 		}
 //		if (6 !== parseInt(trees[i].KroneDurch, 10)) {
-		if ((parseInt(trees[i].KRONENDURCHMESSER_AKT, 10) < 5) || (6 < parseInt(trees[i].KRONENDURCHMESSER_AKT, 10))) {
+//		if ((parseInt(trees[i].KRONENDURCHMESSER_AKT, 10) < 5) || (6 < parseInt(trees[i].KRONENDURCHMESSER_AKT, 10))) {
+		if ((parseInt(trees[i].KRONENDURCHMESSER_AKT, 10) < 4) || (8 < parseInt(trees[i].KRONENDURCHMESSER_AKT, 10))) {
 			continue;
 		}
 		item = JSON.stringify(trees[i], null, 4);
