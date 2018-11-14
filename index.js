@@ -38,7 +38,11 @@ function initQuiz() {
 	'use strict';
 
 	$('.embedQuiz .page1 .questionOptions a').on('click', function (e) {
-		$('.embedQuiz .page1 .answer').show();
+		console.log($('.answer', this.parentElement.parentElement));
+		console.log($(this.parentElement.parentElement, '.answer'));
+//		$('.embedQuiz .page1 .answer').show();
+		$('.answer', $(this.parentElement.parentElement)).show();
+		$($(this.parentElement.parentElement), '.answer').show();
 	});
 	$('.embedQuiz .page2 .questionOptions a').on('click', function (e) {
 		$('.embedQuiz .page2 .answer').show();
