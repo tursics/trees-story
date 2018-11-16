@@ -74,13 +74,13 @@ Carpinus betulus   |                      |                      |18.013 trees  
 Alnus glutinosa    |                      |                      |                      |7.208 trees (15.5%)
 Acer negundo       |                      |                      |                      |4.117 trees (8.8%)
 Salix alba         |                      |                      |                      |3.083 trees (6.6%)
-**Age in years**   |51: 14.816 trees      |33: 16.269 trees      |38: 12.092 trees      |
-                   |36: 13.976 trees      |28: 16.130 trees      |33: 10.467 trees      |
-                   |31: 13.494 trees      |53: 16.111 trees      |48: 9.678 trees       |
-                   |46: 13.029 trees      |38: 15.448 trees      |28: 9.226 trees       |
-                   |66: 11.216 trees      |48: 13.538 trees      |23: 8.719 trees       |
-                   |average: 41.8 years   |average: 41.3 years   |average: 29 years     |
-                   |                      |median: 37 years      |median: 39 years      |median: 1980 (seeded)
+**Age in years**   |51: 14.816 trees      |33: 16.269 trees      |38: 12.092 trees      |-
+-                  |36: 13.976 trees      |28: 16.130 trees      |33: 10.467 trees      |-
+-                  |31: 13.494 trees      |53: 16.111 trees      |48: 9.678 trees       |-
+-                  |46: 13.029 trees      |38: 15.448 trees      |28: 9.226 trees       |-
+-                  |66: 11.216 trees      |48: 13.538 trees      |23: 8.719 trees       |-
+-                  |average: 41.8 years   |average: 41.3 years   |average: 29 years     |-
+-                  |                      |median: 37 years      |median: 39 years      |median: 1980 (seeded)
 **Oldest**         ||||
 2018               |                      |422 trees             |31 trees              |19965: 1 trees
 2017               |                      |1.983 trees           |305 trees             |17975: 1 trees
