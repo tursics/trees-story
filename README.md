@@ -305,6 +305,10 @@ Ideal riverside tree ():
     "UTM33_X": 392038,
     "UTM33_Y": 5829236
 }
+Latitude : 52.602403 deg, or 52 deg 36 min 8.6508 sec
+Longitude: 13.405829 deg, or 13 deg 24 min 20.984 sec
+
+
 ```
 
 # Lizenzen
