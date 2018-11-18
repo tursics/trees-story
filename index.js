@@ -37,33 +37,24 @@ function initSocialMedia() {
 function initQuiz() {
 	'use strict';
 
-	$('.embedQuiz .page1 .questionOptions a').on('click', function (e) {
-		console.log($('.answer', this.parentElement.parentElement));
-		console.log($(this.parentElement.parentElement, '.answer'));
-//		$('.embedQuiz .page1 .answer').show();
-		$('.answer', $(this.parentElement.parentElement)).show();
-		$($(this.parentElement.parentElement), '.answer').show();
+	$('.embedQuiz .questionOptions a').on('click', function () {
+		var elememt = this.parentElement.parentElement.parentElement;
+		$('.answer', $(elememt)).show();
 	});
-	$('.embedQuiz .page2 .questionOptions a').on('click', function (e) {
-		$('.embedQuiz .page2 .answer').show();
-	});
-	$('.embedQuiz .page3 .questionOptions a').on('click', function (e) {
-		$('.embedQuiz .page3 .answer').show();
-	});
-	$('.embedQuiz .page4 .questionOptions a').on('click', function (e) {
-		$('.embedQuiz .page4 .answer').show();
-	});
-	$('.embedQuiz .page1 .answer a').on('click', function (e) {
-		$('.embedQuiz .page1').hide();
-		$('.embedQuiz .page2').show();
-	});
-	$('.embedQuiz .page2 .answer a').on('click', function (e) {
-		$('.embedQuiz .page2').hide();
-		$('.embedQuiz .page3').show();
-	});
-	$('.embedQuiz .page3 .answer a').on('click', function (e) {
-		$('.embedQuiz .page3').hide();
-		$('.embedQuiz .page4').show();
+	$('.embedQuiz .answer a').on('click', function () {
+		var elememt = this.parentElement.parentElement.parentElement,
+			i = 0,
+			name,
+			page = 0;
+
+		for (i = 0; i < elememt.classList.length; ++i) {
+			name = elememt.classList[i];
+			if ((name.length > 4) && (0 === name.indexOf('page'))) {
+				page = parseInt(name.substr(4), 10);
+			}
+		}
+		$('.embedQuiz .page' + page).hide();
+		$('.embedQuiz .page' + (page + 1)).show();
 	});
 
 	// bottom quiz
