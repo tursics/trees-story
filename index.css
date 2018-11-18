@@ -194,6 +194,7 @@
 }
 #headerBox .social a {
 	font-weight: 400;
+	border: 1px solid #fff8;
 }
 #headerBox .social .facebook, #headerBox .social .twitter {
 	color: #fff;
@@ -201,7 +202,6 @@
 	line-height: 2em;
 	padding: .25em;
 	margin: 0 5px 0 0;
-	border-radius: 4px;
 }
 #headerBox .social .facebook {
 	background: #3b5998;
