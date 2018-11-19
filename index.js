@@ -39,6 +39,9 @@ function initQuiz() {
 
 	$('.embedQuiz .questionOptions a').on('click', function () {
 		var elememt = this.parentElement.parentElement.parentElement;
+
+		$(this).addClass('selected');
+		$('.questionOptions', $(elememt)).addClass('disabled');
 		$('.answer', $(elememt)).show();
 	});
 	$('.embedQuiz .answer a').on('click', function () {

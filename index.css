@@ -365,10 +365,25 @@ body, .ui-overlay-a, .ui-page-theme-a {
 	margin: 0;
 	text-align: center;
 }
+#pageStory div.embedQuiz .questionOptions.disabled {
+	pointer-events: none;
+}
 #pageStory div.embedQuiz .questionOptions a {
 	background: #fff;
 	border-color: #6cb6c4;
 	text-shadow: none;
+}
+#pageStory div.embedQuiz .questionOptions.disabled a {
+	background: #dceef180;
+	color: #6cb6c480;
+}
+#pageStory div.embedQuiz .questionOptions a.selected {
+	background: #c47a6c;
+	color: #4E302B;
+}
+#pageStory div.embedQuiz .questionOptions a.selected.correct {
+	background: #6cc4a6;
+	color: #2B4E42;
 }
 #pageStory div.embedQuiz .page {
 	display: none;
