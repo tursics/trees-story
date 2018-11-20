@@ -41,7 +41,9 @@ function initQuiz() {
 		var elememt = this.parentElement.parentElement.parentElement;
 
 		$(this).addClass('selected');
+
 		$('.questionOptions', $(elememt)).addClass('disabled');
+		$('.count', $(elememt)).hide();
 		$('.answer', $(elememt)).show();
 	});
 	$('.embedQuiz .answer a').on('click', function () {
@@ -62,19 +64,19 @@ function initQuiz() {
 
 	// bottom quiz
 
-	$('.embedGuessing a.guess1').on('click', function (e) {
+	$('.embedGuessing a.guess1').on('click', function () {
 		$(this).hide();
 		$('body').removeClass('hideThirdPart');
 	});
-	$('.embedGuessing a.guess2').on('click', function (e) {
+	$('.embedGuessing a.guess2').on('click', function () {
 		$(this).hide();
 		$('body').removeClass('hideFourthPart');
 	});
-	$('.embedGuessing a.guess3').on('click', function (e) {
+	$('.embedGuessing a.guess3').on('click', function () {
 		$(this).hide();
 		$('body').removeClass('hideFivethPart');
 	});
-	$('.embedGuessing a.guess4').on('click', function (e) {
+	$('.embedGuessing a.guess4').on('click', function () {
 		$(this).hide();
 		$('body').removeClass('hideSixthPart');
 	});
@@ -87,7 +89,7 @@ $(document).on("pageshow", "#pageMap", function () {
 
 	initQuiz();
 
-	$('.embedSpending a.continue').on('click', function (e) {
+	$('.embedSpending a.continue').on('click', function () {
 		$(this).hide();
 		$('.embedSpendingHint').hide();
 		$('.embedSpending .answer').show();

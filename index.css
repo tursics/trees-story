@@ -388,7 +388,7 @@ body, .ui-overlay-a, .ui-page-theme-a {
 #pageStory div.embedQuiz .page {
 	display: none;
 }
-#pageStory div.embedQuiz .page1 {
+#pageStory div.embedQuiz .page1, #pageStory div.embedQuiz .page6 {
 	display: block;
 }
 #pageStory div.embedQuiz .answer {
