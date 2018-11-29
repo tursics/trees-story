@@ -77,7 +77,7 @@
 			<a href="http://www.tursics.de/" target="_blank" title="Thomas Tursics">
 				<img src="assets/logotursics.png">
 				von Thomas Tursics,<br>
-				am xx.11.2018
+				am xx.12.2018
 			</a>
 		</div>
 		<div id="pageStory">
@@ -227,96 +227,78 @@
 			<div class="embed embedQuiz">
 				<h3>Neue Bäume</h3>
 				<div class="page page7">
-					<div class="question">Ich wäre bereit für einen Baum zu spenden...</div>
+					<div class="question">So viel Euro wäre ich bereit, für einen Baum zu spenden...</div>
 					<input type="range" name="slider-0" id="slider-0" value="20" min="0" max="500" />
-					<div class="question count" style="text-align:center;">
-						<a href="#" data-role="button" data-theme="b" data-inline="true" class="continue">Weiter</a>
+					<div class="question count questionOptions" style="text-align:center;">
+						<a href="#" data-role="button" data-theme="b" data-inline="true" class="inlineButton">Weiter</a>
 					</div>
 					<div class="answer">
-						Alle <a href="http://cab-log.blogspot.de/2010/01/straenkilometer-in-berlin.html">16,1</a> m steht ein Baum an der Straße.<br>
-						<center><a href="#" data-role="button" data-theme="b" data-inline="true">Nächste Frage</a></center>
+						12% der Leser würden mehr spenden als Sie
 					</div>
 				</div>
 			</div>
-			<div class="embed embedSpending">
-				<h3>Stadtbaumkampagne</h3>
-				<div>Ich wäre bereit für einen Baum zu spenden...</div>
-				<input type="range" name="slider-1" id="slider-1" value="20" min="0" max="500" />
-				<center><a href="#" class="continue" data-role="button" data-theme="b" data-inline="true">weiter</a></center>
-				<div class="answer">12% der Leser würden mehr spenden als Sie</div>
-			</div>
-			<div class="embedSpendingHint">
-				Bitte beantworten Sie die Frage, danach geht es hier weiter...
-			</div>
 			<div class="">
-				A propos erfasst.
-				Erfasst werden die meisten Daten per Hand.
+				A propos sammeln.
+				Gesammelt und gepeichert werden die Baumdaten per Hand.
 				Hin und wieder schleichen sich so Übertragungsfehler ein.
-				Eine Kostprobe?
-				(Wir werden selbstverständlich die entsprechende Stelle informieren und um Berichtigung bitten.)
+				Für die Auswertung wurden Methoden angewandt, die diese und ungültige Werte auszuklammern.
+				So wurden Kronendurchmesser, die einen Wert von 0 cm haben nicht mitgerechnet (also je rund 219.000 Straßen- und Anlagenbäume).
+			</div>
+			<div>
+				Für die typischen Werte eines Baumes wurden alle Bäume z.B. nach deren Höhe sortiert und anschließend der Baum in der Mitte der Reihe ausgewählt.
+				Mit diesem Meridian werden Fehler in den Daten versucht auszuklammern.
+				(Ich bin mit den entsprechenden Stellen in Kontakt und die Daten zu berichtigung.)
+				Aber was wäre, wenn die Daten wahr wären?
 			</div>
 			<div class="embed embedQuiz">
 				<h3>Rate mal</h3>
-			</div>
-			<div class="embed embedGuessing">
-				<h3>Schätzen sie mal</h3>
-				<div>Wie hoch ist der größte Baum?</div>
-				<input type="range" name="slider-2" id="slider-2" value="20" min="0" max="500" />
-				<div class="question count" style="text-align:right;padding: 0 1em;">Frage 1 von 3</div>
-				<center><a href="#" class="continue guess1" data-role="button" data-theme="b" data-inline="true">Nächste Frage</a></center>
-			</div>
-			<div class="thirdPart">
-				Der höchste Baum ist mit 12.600 Metern angegeben.
-				Zum Vergleich: Das ist die Reiseflughöhe von Düsenverkehrsflugzeugen.
-				Insgesamt sind wohl 57 Bäume höher als der Fernsehturm mit seinen 368 Metern.
-			</div>
-			<div class="embed embedGuessing thirdPart">
-				<h3>Schätzen sie mal</h3>
-				<div>Welchen Umfang hat der breiteste Baum?</div>
-				<input type="range" name="slider-3" id="slider-3" value="20" min="0" max="500" />
-				<div class="question count" style="text-align:right;padding: 0 1em;">Frage 2 von 3</div>
-				<center><a href="#" class="continue guess2" data-role="button" data-theme="b" data-inline="true">Nächste Frage</a></center>
-			</div>
-			<div class="fourthPart">
-				Der breiteste Baum hat laut den vorliegenden Zahlen einen Umfang von exakt 325 Metern (knapp gefolgt vom zweitplatzierten mit 305 Metern).
-				325 Meter im Durchmesser entsprechen einem Kreis mit über 100 Metern in der Breite.
-				Oder anders ausgedrückt, der Baum würde in voller Schönheit und (Stamm-)Breite das Dach des Sony-Centers ausfüllen.
-			</div>
-			<div class="embed embedGuessing fourthPart">
-				<h3>Schätzen sie mal</h3>
-				<div>Welchen Kronendurchmesser hat der voluminöseste Baum?</div>
-				<input type="range" name="slider-4" id="slider-4" value="20" min="0" max="500" />
-				<div class="question count" style="text-align:right;padding: 0 1em;">Frage 3 von 3</div>
-				<center><a href="#" class="continue guess3" data-role="button" data-theme="b" data-inline="true">Nächste Frage</a></center>
-			</div>
-			<div class="fivethPart">
-				Schlappe 500 Meter hat die breiteste Baumkrone im Durchmesser laut dem offiziellen Datenbericht.
-				Stünde dieser Baum an Stelle des Fernsehturms, würde er sein Blätterdach vom Roten Rathaus bis zum Kaufhof spannen.
-			</div>
-			<div class="embed embedInfo">
-				<h3>Was die Anwendung zeigt</h3>
-				<div>
-					Eigentlich müsste der Titel „Großstadt-Straßenbaum“ heißen.
-					Es wurden ja nicht alle Bäume in Berlin untersucht; warum nicht, lesen Sie weiter oben im Text.
+				<div class="page page8">
+					<div class="question">Wie hoch ist der größte Baum in Berlin (in Metern)?</div>
+					<input type="range" name="slider-2" id="slider-2" value="20" min="0" max="500" />
+					<div class="question count questionOptions" style="text-align:center;">
+						<a href="#" data-role="button" data-theme="b" data-inline="true" class="inlineButton">Weiter</a>
+					</div>
+					<div class="question count" style="text-align:right;">Frage 1 von 3</div>
+					<div class="answer">
+						Der höchste Baum ist mit 12.600 Metern angegeben.
+						Zum Vergleich: Das ist die Reiseflughöhe von Düsenverkehrsflugzeugen.
+						Insgesamt sind wohl 57 Bäume höher als der Fernsehturm mit seinen 368 Metern.
+						<br>
+						<center><a href="#" data-role="button" data-theme="b" data-inline="true">Nächste Frage</a></center>
+					</div>
 				</div>
-				<div>
-					Um den typischen Berliner Baum zu bestimmen, muss man mit mathematischer Genauigkeit den Mittelwert der untersuchten Parameter ermitteln.
-					Das ist leider mit der vorhandenen Datenqualität nicht möglich.
-					Die zu vielen offensichtlich inkorrekt erfassten Werte (siehe Kostprobe/Quiz oben) würden das Ergebnis verfälschen.
-					Um dennoch einen belastbaren Durchschnittswert zu erhalten wurde geschaut, welcher Wert am häufigsten vorkommt.
-					So sind beispielsweise 13,4% aller Bäume mit einer Höhe von 7 Meter angegeben worden.
+				<div class="page page9">
+					<div class="question">Welchen Umfang hat der breiteste Baum (in Metern)?</div>
+					<input type="range" name="slider-3" id="slider-3" value="20" min="0" max="500" />
+					<div class="question count questionOptions" style="text-align:center;">
+						<a href="#" data-role="button" data-theme="b" data-inline="true" class="inlineButton">Weiter</a>
+					</div>
+					<div class="question count" style="text-align:right;">Frage 2 von 3</div>
+					<div class="answer">
+						Der breiteste Baum hat laut den vorliegenden Zahlen einen Umfang von exakt 325 Metern (knapp gefolgt vom zweitplatzierten mit 305 Metern).
+						325 Meter im Durchmesser entsprechen einem Kreis mit über 100 Metern in der Breite.
+						Oder anders ausgedrückt, der Baum würde in voller Schönheit und (Stamm-)Breite das Dach des Sony-Centers ausfüllen.
+						<br>
+						<center><a href="#" data-role="button" data-theme="b" data-inline="true">Nächste Frage</a></center>
+					</div>
 				</div>
-				<div>
-					Bei der Suche nach dem „0815“-Baum wurden alle Bäume gesucht, die den Idealwerten entsprachen.
-					Bei der Analyse des Alters wurde sowohl 41 als auch 42 Jahre akzeptiert; der Bezirk wurde ignoriert.
-					Heraus gekommen ist exakt ein Baum.
+				<div class="page page10">
+					<div class="question">Welchen Kronendurchmesser (in Metern) hat der voluminöseste Baum?</div>
+					<input type="range" name="slider-4" id="slider-4" value="20" min="0" max="500" />
+					<div class="question count questionOptions" style="text-align:center;">
+						<a href="#" data-role="button" data-theme="b" data-inline="true" class="inlineButton">Weiter</a>
+					</div>
+					<div class="question count" style="text-align:right;">Frage 3 von 3</div>
+					<div class="answer">
+						Schlappe 500 Meter hat die breiteste Baumkrone im Durchmesser laut dem offiziellen Datenbericht.
+						Stünde dieser Baum an Stelle des Fernsehturms, würde er sein Blätterdach vom Roten Rathaus bis zum Kaufhof spannen.
+					</div>
 				</div>
-				<div class="showMore"><a href="#">Weiter lesen</a></div>
 			</div>
 			<div class="embedCredits">
-				Die Rohdaten zu diesem Artikel können Sie <a href="https://daten.berlin.de/datensaetze/baumbestand-berlin-stra%C3%9Fenb%C3%A4ume-wfs" target="_blank">hier ansehen</a> oder <a href="https://github.com/tursics/trees-story/blob/master/data/re_strassenbaeume.tsv" target="_blank">hier ansehen</a> und herunterladen (Quelle: Senatsverwaltung für Stadtentwicklung und Umwelt Berlin. Stand: 01.03.2016).
-				Haben Sie eine Anmerkung oder einen Fehler entdeckt, dann freuen wir uns über <a href="mailto:thomas@tursics.de">Ihre E-Mail</a>.
-				Erstellt von <a href="https://twitter.com/tursics/" target="_blank">Thomas Tursics</a>, 06.02.2017.
+				Die Rohdaten zu diesem Artikel können Sie <a href="https://daten.berlin.de/datensaetze/baumbestand-berlin-stra%C3%9Fenb%C3%A4ume-wfs" target="_blank">hier ansehen</a> oder <a href="https://github.com/tursics/trees-story/blob/master/data/re_strassenbaeume.tsv" target="_blank">hier ansehen</a> und hier??? und herunterladen (Quelle: Senatsverwaltung für Stadtentwicklung und Umwelt Berlin. Stand: 01.03.2016 ???).
+				Haben Sie eine Anmerkung oder einen Fehler entdeckt, dann freue ich mich über <a href="mailto:thomas@tursics.de">Ihre E-Mail</a>.
+				Erstellt von <a href="https://twitter.com/tursics/" target="_blank">Thomas Tursics</a>, ??.12.2018.
 			</div>
 		</div>
 	</div>

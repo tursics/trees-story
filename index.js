@@ -43,6 +43,7 @@ function initQuiz() {
 		$(this).addClass('selected');
 
 		$('.questionOptions', $(elememt)).addClass('disabled');
+		$('.ui-slider', $(elememt)).addClass('disabled');
 		$('.count', $(elememt)).hide();
 		$('.answer', $(elememt)).show();
 	});
@@ -61,25 +62,6 @@ function initQuiz() {
 		$('.embedQuiz .page' + page).hide();
 		$('.embedQuiz .page' + (page + 1)).show();
 	});
-
-	// bottom quiz
-
-	$('.embedGuessing a.guess1').on('click', function () {
-		$(this).hide();
-		$('body').removeClass('hideThirdPart');
-	});
-	$('.embedGuessing a.guess2').on('click', function () {
-		$(this).hide();
-		$('body').removeClass('hideFourthPart');
-	});
-	$('.embedGuessing a.guess3').on('click', function () {
-		$(this).hide();
-		$('body').removeClass('hideFivethPart');
-	});
-	$('.embedGuessing a.guess4').on('click', function () {
-		$(this).hide();
-		$('body').removeClass('hideSixthPart');
-	});
 }
 
 // -----------------------------------------------------------------------------
@@ -89,18 +71,11 @@ $(document).on("pageshow", "#pageMap", function () {
 
 	initQuiz();
 
-	$('.embedSpending a.continue').on('click', function () {
-		$(this).hide();
-		$('.embedSpendingHint').hide();
-		$('.embedSpending .answer').show();
-		$('body').removeClass('hideSecondPart');
-	});
-
-	$('.embedInfo').addClass('shrink');
+/*	$('.embedInfo').addClass('shrink');
 	$('.embedInfo .showMore').on('click', function (e) {
 		e.preventDefault();
 		$(this).parent().removeClass('shrink');
-	});
+	});*/
 });
 
 // -----------------------------------------------------------------------------

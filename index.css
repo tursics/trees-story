@@ -337,7 +337,7 @@ body, .ui-overlay-a, .ui-page-theme-a {
 	line-height: 1.4em;
 }
 
-#pageStory div.embedQuiz, #pageStory div.embedSpending, #pageStory div.embedGuessing, #pageStory div.embed {
+#pageStory div.embedQuiz, #pageStory div.embedGuessing, #pageStory div.embed {
 	background: #dceef1;
 	font-family: 'Montserrat', sans-serif;
 	font-size: 16px;
@@ -388,7 +388,7 @@ body, .ui-overlay-a, .ui-page-theme-a {
 #pageStory div.embedQuiz .page {
 	display: none;
 }
-#pageStory div.embedQuiz .page1, #pageStory div.embedQuiz .page6, #pageStory div.embedQuiz .page7 {
+#pageStory div.embedQuiz .page1, #pageStory div.embedQuiz .page6, #pageStory div.embedQuiz .page7, #pageStory div.embedQuiz .page8 {
 	display: block;
 }
 #pageStory div.embedQuiz .answer {
@@ -396,7 +396,7 @@ body, .ui-overlay-a, .ui-page-theme-a {
 	display: none;
 }
 
-#pageStory .answer a.ui-btn, #pageStory a.continue.ui-btn {
+#pageStory .answer a.ui-btn, #pageStory a.continue.ui-btn, #pageStory div.embedQuiz .questionOptions a.inlineButton {
 	background: #6cb6c4;
 	color: #fff;
 	border: none;
@@ -418,19 +418,9 @@ body, .ui-overlay-a, .ui-page-theme-a {
 	background: #6cb6c4;
 }
 
-#pageStory div.embedSpending .ui-slider, #pageStory div.embedGuessing .ui-slider {
+#pageStory div.embedGuessing .ui-slider {
 	padding-top: 0;
 	margin: 0;
-}
-#pageStory div.embedSpending .answer {
-	display: none;
-}
-
-.hideSecondPart .secondPart {
-	color: #ddd;
-}
-.hideThirdPart .thirdPart, .hideFourthPart .fourthPart, .hideFivethPart .fivethPart, .hideSixthPart .sixthPart {
-	opacity: 0;
 }
 
 #pageStory div.embedPrinterLabel {
