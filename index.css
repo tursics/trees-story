@@ -365,7 +365,7 @@ body, .ui-overlay-a, .ui-page-theme-a {
 	margin: 0;
 	text-align: center;
 }
-#pageStory div.embedQuiz .questionOptions.disabled {
+#pageStory div.embedQuiz .questionOptions.disabled, #pageStory div.embedQuiz .ui-slider.disabled {
 	pointer-events: none;
 }
 #pageStory div.embedQuiz .questionOptions a {
@@ -407,6 +407,13 @@ body, .ui-overlay-a, .ui-page-theme-a {
 	border-color: #6cb6c4;
 	color: #6cb6c4;
 }
+#pageStory .ui-slider.disabled input {
+	background: #dceef180;
+	color: #6cb6c4;
+}
+#pageStory .disabled .ui-slider-track {
+	background: #dceef180;
+}
 #pageStory .ui-slider-track {
 	padding: 0;
 	background: #fff;
@@ -416,6 +423,9 @@ body, .ui-overlay-a, .ui-page-theme-a {
 	padding: 0;
 	border-color: #6cb6c4;
 	background: #6cb6c4;
+}
+#pageStory .disabled .ui-slider-handle {
+	background: #dceef1;
 }
 
 #pageStory div.embedGuessing .ui-slider {
