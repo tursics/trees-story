@@ -67,11 +67,12 @@
 	width: 100vw;
 	height: 80vh;
 	padding: 0px !important;
-	background: url(./assets/thetree.jpg) no-repeat center center fixed; 
+	background: url(./assets/thestreettree.jpg) no-repeat center bottom fixed; 
 	-webkit-background-size: cover;
 	-moz-background-size: cover;
 	-o-background-size: cover;
 	background-size: cover;
+	background-position: center calc(100% - 20vh);
 }
 
 /* leaflet */
@@ -101,7 +102,7 @@
 #mapContainer h1 {
 	font-family: 'Noto Serif', serif;
 	margin: 0 0 0 50%;
-	background: #6cb6c4f0;
+	background: #6cb6c4d0;
 	border-top: 2px solid #dceef1c0;
 	border-left: 2px solid #dceef1c0;
 	padding: 0 .2em;
@@ -109,7 +110,7 @@
 }
 #mapContainer div div {
 	margin: 0 0 0 50%;
-	background: #6cb6c4f0;
+	background: #6cb6c4d0;
 	border-left: 2px solid #dceef1c0;
 	border-bottom: 2px solid #dceef1c0;
 	padding: .5em;
