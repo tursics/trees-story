@@ -200,7 +200,7 @@
 #headerBox .social .facebook, #headerBox .social .twitter {
 	color: #fff;
 	text-decoration: none;
-	line-height: 2em;
+	line-height: 1.5em;
 	padding: .25em;
 	margin: 0 5px 0 0;
 }
@@ -267,7 +267,7 @@ body, .ui-overlay-a, .ui-page-theme-a {
 	margin: 0 1em;
 }
 #pageStory a {
-	color: #6cb6c4;
+	color: #5c9ba7;
 	text-decoration: none;
 	font-weight: 400;
 }
@@ -333,7 +333,7 @@ body, .ui-overlay-a, .ui-page-theme-a {
 #pageStory div.embedImage div {
 	font-family: 'Montserrat', sans-serif;
 	font-size: 12px;
-	color: #999;
+	color: #666;
 	padding: .5em 7.5em 0 7.5em;
 	line-height: 1.4em;
 }
@@ -494,7 +494,7 @@ body, .ui-overlay-a, .ui-page-theme-a {
 	vertical-align: middle;
 }
 #author, #author a {
-	color: #777;
+	color: #666;
 	font-weight: 500;
 	text-decoration: none;
 }
