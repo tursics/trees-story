@@ -15,23 +15,41 @@ String.prototype.startsWith = String.prototype.startsWith || function (prefix) {
 
 // -----------------------------------------------------------------------------
 
-function initSocialMedia() {
+function getPageNumber(element) {
 	'use strict';
 
-	setTimeout(function () {
-		$.ajax('http://www.tursics.de/v5shariff.php?url=http://trees-story.tursics.de/')
-			.done(function (json) {
-				$('.social .facebook span').html(json.facebook);
-				if (json.facebook > 0) {
-					$('.social .facebook span').addClass('active');
-				}
+	var i = 0,
+		name,
+		page = 0;
 
-				$('.social .twitter span').html(json.twitter);
-				if (json.twitter > 0) {
-					$('.social .twitter span').addClass('active');
-				}
-			});
-	}, 1000);
+	for (i = 0; i < element.classList.length; ++i) {
+		name = element.classList[i];
+		if ((name.length > 4) && (0 === name.indexOf('page'))) {
+			page = parseInt(name.substr(4), 10);
+		}
+	}
+
+	return page;
+}
+
+// -----------------------------------------------------------------------------
+
+function sendStatistics(selected, element) {
+	'use strict';
+
+	var page = getPageNumber(element),
+		value = '',
+		dataUrl;
+
+	if ($('.ui-slider', $(element)).length > 0) {
+		value = $('.ui-slider input', $(element)).val();
+	} else {
+		value = $(selected).text();
+	}
+
+	dataUrl = 'visitors.php?page=' + page + '&value=' + encodeURIComponent(value);
+	$.getJSON(dataUrl, function () {
+	});
 }
 
 // -----------------------------------------------------------------------------
@@ -40,30 +58,24 @@ function initQuiz() {
 	'use strict';
 
 	$('.embedQuiz .questionOptions a').on('click', function () {
-		var elememt = this.parentElement.parentElement.parentElement;
-		if ($('.ui-slider', $(elememt)).length > 0) {
-			elememt = this.parentElement.parentElement;
+		var element = this.parentElement.parentElement.parentElement;
+		if ($('.ui-slider', $(element)).length > 0) {
+			element = this.parentElement.parentElement;
 		}
 
 		$(this).addClass('selected');
 
-		$('.questionOptions', $(elememt)).addClass('disabled');
-		$('.ui-slider', $(elememt)).addClass('disabled');
-		$('.count', $(elememt)).hide();
-		$('.answer', $(elememt)).show();
+		$('.questionOptions', $(element)).addClass('disabled');
+		$('.ui-slider', $(element)).addClass('disabled');
+		$('.count', $(element)).hide();
+		$('.answer', $(element)).show();
+
+		sendStatistics(this, element);
 	});
 	$('.embedQuiz .answer a').on('click', function () {
-		var elememt = this.parentElement.parentElement.parentElement,
-			i = 0,
-			name,
-			page = 0;
+		var element = this.parentElement.parentElement.parentElement,
+			page = getPageNumber(element);
 
-		for (i = 0; i < elememt.classList.length; ++i) {
-			name = elememt.classList[i];
-			if ((name.length > 4) && (0 === name.indexOf('page'))) {
-				page = parseInt(name.substr(4), 10);
-			}
-		}
 		$('.embedQuiz .page' + page).hide();
 		$('.embedQuiz .page' + (page + 1)).show();
 	});
@@ -75,7 +87,24 @@ function setVisitorData(path) {
 	'use strict';
 
 	if (visitorData && visitorData.donate) {
-//		$(path).html('12% der Leser würden mehr spenden als Sie');
+		var val = $(path + ' input').val(),
+			i,
+			sum = 0,
+			more = 0;
+
+		for (i = 0; i < visitorData.donate.length; ++i) {
+			if (i > val) {
+				more += visitorData.donate[i];
+			}
+			sum += visitorData.donate[i];
+		}
+
+		if (sum === 0) {
+			sum = 1;
+		}
+
+		val = parseInt(more / sum * 100, 10);
+		$(path + ' .answer:first').html(val + '% der Leser würden mehr spenden als Sie');
 	}
 }
 
@@ -89,7 +118,10 @@ $(document).on("pageshow", "#pageMap", function () {
 	var dataUrl = 'data/visitors.json';
 	$.getJSON(dataUrl, function (serverData) {
 		visitorData = serverData;
-		setVisitorData('.embedQuiz .page6 .answer:first');
+
+		$('.embedQuiz .page6 .questionOptions a').on('click', function () {
+//			setVisitorData('.embedQuiz .page6');
+		});
 	});
 });
 
