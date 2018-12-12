@@ -3,6 +3,8 @@
 /*jslint browser: true*/
 /*global $*/
 
+var visitorData = null;
+
 // -----------------------------------------------------------------------------
 
 String.prototype.startsWith = String.prototype.startsWith || function (prefix) {
@@ -69,16 +71,26 @@ function initQuiz() {
 
 // -----------------------------------------------------------------------------
 
+function setVisitorData(path) {
+	'use strict';
+
+	if (visitorData && visitorData.donate) {
+//		$(path).html('12% der Leser würden mehr spenden als Sie');
+	}
+}
+
+// -----------------------------------------------------------------------------
+
 $(document).on("pageshow", "#pageMap", function () {
 	'use strict';
 
 	initQuiz();
 
-/*	$('.embedInfo').addClass('shrink');
-	$('.embedInfo .showMore').on('click', function (e) {
-		e.preventDefault();
-		$(this).parent().removeClass('shrink');
-	});*/
+	var dataUrl = 'data/visitors.json';
+	$.getJSON(dataUrl, function (serverData) {
+		visitorData = serverData;
+		setVisitorData('.embedQuiz .page6 .answer:first');
+	});
 });
 
 // -----------------------------------------------------------------------------
