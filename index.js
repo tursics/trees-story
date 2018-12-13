@@ -120,7 +120,7 @@ $(document).on("pageshow", "#pageMap", function () {
 		visitorData = serverData;
 
 		$('.embedQuiz .page6 .questionOptions a').on('click', function () {
-//			setVisitorData('.embedQuiz .page6');
+			setVisitorData('.embedQuiz .page6');
 		});
 	});
 });
