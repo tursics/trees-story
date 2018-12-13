@@ -1,16 +1,16 @@
 # Großstadt-Baum
 
-Dieses Projekt ist noch im entstehen...
+Dieses Projekt wurde am 14.12.2018 veröffentlicht.
 
-<img src="https://raw.githubusercontent.com/tursics/trees-story/master/assets/screenshot--1.png" width="300">
+<img src="https://raw.githubusercontent.com/tursics/trees-story/master/assets/screenshot-1.png" width="300">
 
-Die Grundlage ist ein Datensatz über Straßenbäume aus dem Open Data Portal Berlins... (und weitere Bäume)
+Die Grundlage sind Datensätze über Bäume aus dem Open Data Portal Berlins. Näheres am Ende des Artikels.
 
-<img src="https://raw.githubusercontent.com/tursics/trees-story/master/assets/screenshot--2.png" width="300">
+<img src="https://raw.githubusercontent.com/tursics/trees-story/master/assets/screenshot-2.png" width="300">
 
 Es gibt einige Statistiken und interaktive Elemente in dem Artikel.
 
-<img src="https://raw.githubusercontent.com/tursics/trees-story/master/assets/screenshot--3.png" width="300">
+<img src="https://raw.githubusercontent.com/tursics/trees-story/master/assets/screenshot-3.png" width="300">
 
 # Build
 
@@ -19,12 +19,7 @@ $ npm install tsv
 $ node script/build-statistics.js 
 ```
 
-- data #1 from 2016-03-01
-- data #2 from 2018
-- data #3 from 2018
-- data #4 from ????
-
-title              |street trees, 2016    |street trees, 2018    |park trees, 2018      |riverside trees, ???? |
+title              |street trees, 2016    |street trees, 2018    |park trees, 2018      |riverside trees, 2017 |
 -------------------|----------------------|----------------------|----------------------|----------------------|
 Data count         |331.366 trees         |434.156 trees         |459.903 trees         |46.366 trees
 Trees count        |331.352 trees         |434.156 trees         |459.903 trees         |46.366 trees
@@ -283,7 +278,7 @@ Ideal park tree (2018, ignore BEZIRK):
 }
 ```
 
-Ideal riverside tree ():
+Ideal riverside tree (2017):
 ```
 {
     "GISID": "A#5819692#2154",
@@ -311,32 +306,6 @@ Longitude: 13.405829 deg, or 13 deg 24 min 20.984 sec
 
 ```
 
-# Lizenzen
-
-Der Quelltext steht unter der MIT-Lizenz, das eine Bild unter CC-0-Lizenz.
-
-
----
-
-2nd version of this site:
-
-## collect the data
-
-- install the [WFS Downloader](https://github.com/codeforberlin/wfs-downloader): ```pip install wfs-downloader```
-- download the tree data: ```wfs-downloader script/download-config.yml```
-
-**Nutzungsbedingungen:**
-
-```Für die Verwendung der Daten gelten folgende Nutzungsbestimmungen: http://www.stadtentwicklung.berlin.de/geoinformation/download/nutzIII.pdf - Der Quellenvermerk gemäß §2 lautet "Geoportal Berlin / [Titel des Datensatzes]".```
-
-**wfs:Title**
-
-```Baumbestand Berlin - Straßenbäume - Sachdaten zur Karte```
-
----
-
-3rd version of this site:
-
 ## collect the data
 
 Go to the FIS-Broker, browse to the datasets and copy the WFS links
@@ -346,25 +315,6 @@ Go to the FIS-Broker, browse to the datasets and copy the WFS links
 
 Import the WFS links in QGIS and export the datasets as TSV files (choose CSV with TAB separator)
 
-## data
+# Lizenzen
 
-**Uferbäume**
-- description: Bäume am Gewässer
-- modified: 03.02.2017
-
-
-**Baumbestand Berlin - Anlagenbäume**
-- description: Sachdaten zum Baumbestand - Anlagenbäume - mit Angaben zur Baumart, Adresse, Pflanzjahr, Höhe etc.
-- more: https://fbinter.stadt-berlin.de/fb_daten/beschreibung/sachdaten/sach_baumbestand_anlagen.html
-- based on:  Meldung des Grünflächenbestandes durch die bezirklichen Straßen- und Grünflächenämter 
-- modified: 30.05.2018
-
-
-**Baumbestand Berlin - Straßenbäume**
-- description: Sachdaten zum Baumbestand - Straßenbäume - mit Angaben zur Baumart, Adresse, Pflanzjahr, Höhe etc.
-- more: https://fbinter.stadt-berlin.de/fb_daten/beschreibung/sachdaten/sach_baumbestand_strassen.html
-- based on: Meldung des Grünflächenbestandes durch die bezirklichen Straßen- und Grünflächenämter 
-- modified: 30.05.2018
-
-**license**
-- Nutzungsbedingungen: Für die Verwendung der Daten gelten folgende Nutzungsbestimmungen: http://www.stadtentwicklung.berlin.de/geoinformation/download/nutzIII.pdf - Der Quellenvermerk gemäß §2 lautet "Geoportal Berlin / [Titel des Datensatzes]".
+Der Quelltext steht unter der MIT-Lizenz, die Bilder unter CC-0-Lizenz.
